@@ -11,7 +11,9 @@ Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender
 | Decisão | Motivo | Quando rever |
 | --- | --- | --- |
 | Repositório próprio `Site-Con-Affetto` | O site público tem conteúdo e ciclo de publicação próprios. | Se houver necessidade concreta de compartilhar código. |
-| Página estática em HTML e CSS | Apresentação e cardápio não exigem estado de aplicação. Os fontes podem ser lidos diretamente. | Novas interações ou manutenção de várias páginas. |
+| Base inicial em HTML e CSS | Primeira referência local de conteúdo e visual. | Revisada pelo novo requisito de SSR; permanece como implementação até a migração. |
+| SSR para o site | Requisito definido pelo responsável; nesta proposta, significa gerar o HTML no servidor por requisição. | Se o responsável redefinir o requisito de renderização. |
+| Sem banco de dados nesta etapa | O cardápio pode permanecer em um arquivo versionado, sem persistência ou interface administrativa. | Se surgirem requisitos de edição, persistência ou integração. |
 | Links para categorias e seções | Navegação nativa, disponível sem script. | Se o volume do catálogo justificar busca ou filtros. |
 | Recursos locais | Carregamento da marca e das fontes sem depender de serviços externos. | Medição de tamanho ou requisito concreto de distribuição. |
 | ODS atual como fonte editorial | É a fonte indicada pelo responsável. O caixa inclui outros artigos e nomes. | Quando o responsável mudar a fonte oficial do cardápio. |
@@ -30,6 +32,7 @@ Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender
 4. **Página:** apresentação, cardápio com oito biscoitos e duas pipocas, história e navegação implementados em HTML e CSS. Conferências estáticas e HTTP realizadas; revisão visual e comercial pendente.
 5. **Versionamento:** repositório próprio com branch `main`. O conjunto inicial reúne os fontes, os recursos da marca utilizados e a documentação. A identificação do commit fica no histórico Git; não há remoto configurado ou publicação no GitHub nesta etapa.
 6. **Diretrizes de desenvolvimento:** princípios para decisões técnicas, arquitetura, código, validação, entrega, manutenção e uso de IA consolidados em `DIRETRIZES-DE-DESENVOLVIMENTO.md`, com regras de aplicação integradas ao `AGENTS.md`. O guia distingue princípios gerais de decisões que dependem do contexto e inclui um bloco de instruções reutilizável em outros projetos. A documentação está organizada em `Docs/`.
+7. **Planejamento de SSR:** requisito registrado sem incluir banco de dados. Astro e Next.js comparados pelo perfil de apresentação e cardápio; responsabilidades e critérios de migração descritos em `06-arquitetura-e-renderizacao.md`. A base pública permanece HTML/CSS; não houve instalação de framework ou migração nesta etapa.
 
 ## Validação registrada
 
@@ -49,6 +52,7 @@ A aparência no navegador, a experiência de uso em celular e a aprovação come
 
 ## Pendências para a revisão do responsável
 
+- Definir o frontend a partir da comparação registrada e, na implementação, validar SSR no servidor de produção local.
 - Conferir o conjunto final de nomes e a apresentação visual em computador e celular.
 - Percorrer os fontes com o responsável para conferir a compreensão da estrutura e das escolhas de implementação.
 - Definir preços e unidades caso devam ser exibidos.

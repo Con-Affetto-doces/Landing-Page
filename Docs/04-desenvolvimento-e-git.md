@@ -1,5 +1,7 @@
 # Desenvolvimento, validação e Git
 
+As instruções de prévia e as verificações abaixo descrevem a base estática atual. O requisito de SSR está em planejamento; seus critérios de implementação e execução ficam em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md).
+
 ## Fluxo de trabalho
 
 Cada etapa começa por uma necessidade observável: conteúdo a acrescentar, problema de leitura, comportamento ou requisito novo. Antes de adotar uma tecnologia, registrar o que ela resolve e o custo de mantê-la. Depois da alteração, conferir o resultado, atualizar a documentação afetada e criar um commit coerente.
@@ -70,10 +72,10 @@ O repositório contém somente cópias dos logotipos usados e fontes com suas li
 
 ## GitHub e hospedagem
 
-Git registra a história local. GitHub hospeda uma cópia do repositório. Hospedagem do site entrega os arquivos de `public/` aos visitantes. São três estados distintos.
+Git registra a história local. GitHub hospeda uma cópia do repositório. A hospedagem do site entrega os recursos e, na versão SSR planejada, executará a geração das páginas. São três estados distintos.
 
 A instrução inicial deixa GitHub para depois. Antes dessa etapa, definir o nome e a visibilidade do repositório, a licença do código e conferir o material que será enviado. A organização do projeto do caixa é uma referência possível, não um remoto já configurado para este site.
 
 Depois de um push real, confirmar o hash da branch no remoto com `git ls-remote --heads origin refs/heads/main`. Um commit local ou `git push --dry-run` não confirma publicação.
 
-A hospedagem será escolhida quando o conteúdo e a apresentação estiverem revisados. O formato estático permite publicar o diretório `public/` em uma hospedagem que o suporte. Não há domínio ou provedor assumido, nem integração externa ativada nesta fase.
+A hospedagem será escolhida conforme o frontend e o runtime adotados. O requisito de SSR exige capacidade de executar a renderização; publicar apenas o diretório `public/` não implementa a arquitetura planejada. A comparação e as limitações estão em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md). Não há domínio ou provedor assumido, nem integração externa ativada nesta fase.

@@ -1,6 +1,10 @@
 # Tecnologias e código
 
-## Como o site funciona
+## Estado da implementação
+
+Este documento descreve a base HTML/CSS existente. O novo requisito é SSR sem banco de dados; a comparação de frontend e as responsabilidades propostas estão em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md). Framework, dependências e comandos de servidor ainda não foram incorporados ao código.
+
+## Como a base atual funciona
 
 O navegador solicita `index.html`, encontra a folha de estilos e os arquivos da marca e monta a página. A hospedagem precisa apenas entregar esses arquivos por HTTP. Não existe código de servidor para calcular conteúdo ou consultar um banco.
 
@@ -35,7 +39,7 @@ Site-Con-Affetto/
       fontes/               WOFF2 e licenças OFL
 ```
 
-Somente `public/` precisa ser entregue à hospedagem. Os documentos completos da marca e a planilha ficam fora desta árvore. Um clone do repositório terá os arquivos necessários para abrir a página sem depender dos caminhos originais.
+Na base estática atual, `public/` reúne os arquivos servidos. A versão SSR terá artefatos e um processo de execução próprios, a definir na migração. Os documentos completos da marca e a planilha ficam fora desta árvore. Um clone do repositório terá os arquivos necessários para abrir a página sem depender dos caminhos originais.
 
 ## Organização do HTML
 
@@ -45,7 +49,7 @@ O link inicial “Ir para o conteúdo” aparece ao receber foco pelo teclado. A
 
 Os PNGs fornecidos incluem margens transparentes grandes. Elementos SVG com `viewBox` apresentam a área útil das imagens sem alterar seus arquivos, cores ou proporções. O logotipo no cabeçalho recebe um nome acessível; o símbolo decorativo da apresentação fica oculto de leitores de tela.
 
-Os caminhos são relativos, como `./styles.css` e `./assets/marca/logo-principal.png`. Isso permite servir a pasta na raiz de um domínio ou em um subcaminho, como o de um futuro GitHub Pages.
+Os caminhos atuais são relativos, como `./styles.css` e `./assets/marca/logo-principal.png`. Isso permite servir a pasta na raiz de um domínio ou em um subcaminho. A resolução dos recursos também precisará ser conferida na migração para SSR.
 
 ## Organização do CSS
 
