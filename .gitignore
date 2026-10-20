@@ -1,0 +1,21 @@
+# Configuração e dados locais
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.ods
+*.xlsx
+
+# Arquivos temporários e ferramentas
+__pycache__/
+*.pyc
+*.log
+*~
+.DS_Store
+.idea/
+.vscode/
+node_modules/
+dist/
+coverage/

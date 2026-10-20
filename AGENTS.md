@@ -1,0 +1,20 @@
+# Instruções do site
+
+- Responder em português do Brasil. Explicar a finalidade e o custo de uma tecnologia antes de incorporá-la ao projeto.
+- Seguir como diretriz central as práticas de código e desenvolvimento ensinadas por Filipe Deschamps no curso.dev, aplicadas ao contexto deste projeto. O guia completo e a classificação das 49 notas estão em `Docs/DIRETRIZES-DE-DESENVOLVIMENTO.md`; consultar uma aula específica quando houver dúvida concreta.
+- Escopo atual: apresentação da Con Affetto e cardápio. Usar a identidade visual existente e conteúdo confirmado pelo responsável pela marca.
+- Manter o projeto estático enquanto o comportamento pedido couber em HTML e CSS. Adicionar JavaScript ou dependências somente para uma necessidade concreta, registrando a decisão.
+- A base HTML/CSS é a primeira proposta técnica local. Evoluir as escolhas com o responsável, explicando os critérios. Preservar clareza, modificabilidade, crescimento orgânico e a convenção existente; não importar automaticamente a stack ou a estrutura do TabNews.
+- Definir o problema, quem usa e o critério de conclusão antes de acrescentar comportamento. Organizar o código por responsabilidades e por mudanças reais; justificar abstrações, dependências e desvios de convenção.
+- Adotar convenções compartilhadas de escrita e automatizar o que tiver critério claro na etapa de ferramentas. Não tratar configuração de editor como garantia de formatação de todo o repositório.
+- Escolher verificações pelo risco e pelo comportamento, cobrindo a fronteira relevante e a capacidade de detectar a falha. Medir o efeito antes de declarar uma melhoria e separar fatos, hipóteses e limites.
+- Manter procedimentos reproduzíveis, dependências compreendidas e mudanças de escopo explicadas. Distinguir código escrito, validação local, publicação e uso observado.
+- Antes de uma etapa, informar o que será alterado e por quê. Documentar o resultado, os limites da verificação e o ponto de retomada em `Docs/05-decisoes-e-andamento.md`.
+- Ajustar a explicação à dúvida do responsável, permitir que examine as propostas e usar feedback para escolher a próxima etapa. A participação e o aprendizado do responsável fazem parte do modo de conduzir o projeto.
+- Explicar mudanças de estrutura e manutenção em `Docs/02-tecnologias-e-codigo.md`. Não colocar comentários sobre desenvolvimento na interface do visitante.
+- A planilha de receitas atuais é a referência inicial do cardápio. Excluir Doce Maria. Não transformar repetição de etiquetas em novos produtos nem inventar preços, fotos, composição ou alegações alimentares.
+- Manter planilha, banco, dados de clientes, receitas completas e documentos privados fora deste repositório. O site não depende do Caixa da Feira em execução.
+- Preservar os documentos e arquivos originais da marca. Para substituir arquivos existentes do projeto, manter uma forma de retorno adequada ao risco.
+- Verificar conteúdo, referências locais e comportamento afetado. Distinguir conferência estática, resposta HTTP e aprovação visual no navegador.
+- Versionar conjuntos coerentes após conferir `git diff --cached` e `git status`. Não incluir alterações alheias.
+- GitHub e hospedagem são etapas posteriores ao desenvolvimento local solicitado. Registrar publicação apenas após verificar o remoto ou o resultado da hospedagem.

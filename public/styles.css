@@ -1,0 +1,528 @@
+/* Arquivos da identidade fornecida. Pesos e estilos correspondem aos TTFs. */
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fontes/poppins-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fontes/poppins-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("./assets/fontes/bodoni-moda-black-italic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* As três primeiras cores vêm do manual. As demais são apoios de leitura. */
+:root {
+  --violeta: #685498;
+  --rosa: #de8096;
+  --branco: #ffffff;
+  --texto: #342c40;
+  --texto-suave: #60576b;
+  --rosa-claro: #fbf3f5;
+  --violeta-claro: #f0ecf6;
+  --linha: #ded6e8;
+  --largura-conteudo: 72rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--branco);
+  color: var(--texto);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+::selection {
+  background: var(--violeta);
+  color: var(--branco);
+}
+
+a {
+  color: var(--violeta);
+  text-underline-offset: 0.25em;
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+.art-signature,
+.footer-brand {
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-style: italic;
+  font-weight: 900;
+}
+
+h2 {
+  color: var(--violeta);
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  line-height: 1.12;
+}
+
+h3,
+h4 {
+  margin: 0;
+  font-weight: 500;
+}
+
+section[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+.container {
+  width: min(calc(100% - 3rem), var(--largura-conteudo));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  left: 1.5rem;
+  padding: 0.5rem 1rem;
+  transform: translateY(-200%);
+  background: var(--branco);
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  color: var(--violeta);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Cabeçalho: links sempre visíveis, inclusive em celular. */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 0.75rem 1rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.brand {
+  display: block;
+  flex-shrink: 0;
+}
+
+.brand svg {
+  display: block;
+  width: 10.5rem;
+  height: auto;
+}
+
+.page-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.page-header nav a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  text-decoration: none;
+}
+
+.page-header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Apresentação: texto e o símbolo original da marca. */
+.hero {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 4rem 5rem;
+}
+
+h1 {
+  font-size: clamp(3.1rem, 6vw, 5.5rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+h1 span {
+  color: var(--violeta);
+}
+
+.hero-description {
+  max-width: 27rem;
+  margin-top: 1.75rem;
+  color: var(--texto-suave);
+  font-size: 1.0625rem;
+}
+
+.primary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid var(--violeta);
+  background: var(--violeta);
+  color: var(--branco);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  background: var(--branco);
+  color: var(--violeta);
+}
+
+.primary-link:focus-visible {
+  outline-color: var(--violeta);
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  min-height: 27rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3.5rem 2rem 2.5rem;
+  border-radius: 15rem 15rem 0 0;
+  background: var(--rosa-claro);
+}
+
+.hero-art::before {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid var(--rosa);
+  border-radius: inherit;
+  content: "";
+}
+
+.hero-art svg {
+  width: min(100%, 15rem);
+  height: auto;
+}
+
+.art-label {
+  color: var(--violeta);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.art-signature {
+  color: var(--violeta);
+  font-size: 2.75rem;
+  line-height: 1.2;
+}
+
+/* Cardápio: as duas categorias têm seus produtos no próprio HTML. */
+.menu-section {
+  padding-block: 4.5rem 5rem;
+  background: var(--violeta-claro);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.category-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.75rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.category-links a {
+  display: inline-block;
+  padding-block: 0.5rem;
+}
+
+.menu-groups {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.category-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.category-heading h3 {
+  font-size: 1.125rem;
+}
+
+.category-number {
+  color: var(--violeta);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.product-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.biscuit-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+}
+
+.product {
+  min-width: 0;
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.product h4 {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.product-note {
+  margin-top: 0.25rem;
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+}
+
+.popcorn-menu {
+  padding: 1.75rem;
+  background: var(--violeta);
+  color: var(--branco);
+}
+
+.popcorn-menu .category-number {
+  color: var(--branco);
+}
+
+.popcorn-menu .product {
+  border-color: rgb(255 255 255 / 35%);
+}
+
+/* História e rodapé. */
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  padding-block: 5rem;
+}
+
+.story-copy {
+  padding-top: 2.5rem;
+  color: var(--texto-suave);
+}
+
+.story-copy p + p {
+  margin-top: 1.25rem;
+}
+
+.story-copy .story-signature {
+  color: var(--violeta);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.page-footer {
+  padding-block: 2.5rem;
+  background: var(--violeta);
+  color: var(--branco);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-brand {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.footer-description {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.page-footer a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: var(--branco);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* Abaixo de 900 px, categorias em sequência; abaixo de 600 px, uma coluna. */
+@media (max-width: 56.25rem) {
+  .hero {
+    gap: 2rem;
+    padding-block: 3rem;
+  }
+
+  .hero-art {
+    min-height: 23rem;
+    padding-inline: 1.5rem;
+  }
+
+  .art-label {
+    max-width: 8rem;
+  }
+
+  .menu-groups {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .popcorn-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  .story-section {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .container {
+    width: calc(100% - 2.5rem);
+  }
+
+  .page-header {
+    gap: 1rem;
+  }
+
+  .brand svg {
+    width: 8rem;
+  }
+
+  .page-header nav {
+    gap: 0.25rem;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.8125rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-block: 2.5rem 3rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-art {
+    min-height: 0;
+    padding-block: 3.5rem 2.5rem;
+  }
+
+  .hero-art svg {
+    width: 10rem;
+  }
+
+  .art-label {
+    max-width: none;
+  }
+
+  .art-signature {
+    font-size: 2.25rem;
+  }
+
+  .menu-section {
+    padding-block: 3rem;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .biscuit-list,
+  .popcorn-list,
+  .story-section {
+    grid-template-columns: 1fr;
+  }
+
+  .story-section {
+    gap: 1.5rem;
+    padding-block: 3rem;
+  }
+
+  .story-copy {
+    padding-top: 0;
+  }
+
+  .footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
