@@ -4,6 +4,8 @@
 
 O responsável pediu participação nas decisões técnicas e documentação de projeto e código, seguindo a prática do Caixa da Feira. As etapas devem permanecer compreensíveis no chat e neste repositório. Mudanças estruturais precisam de motivo, arquivos afetados, verificação e limites declarados.
 
+A eficiência deve ser avaliada ao longo da vida do projeto: compreender, corrigir, operar e evoluir. Mais tempo inicial é aceitável quando reduz dificuldades posteriores. Pesquisa, documentação e estrutura adicional precisam contribuir para uma necessidade concreta.
+
 ## Decisões de 20/10/2026
 
 | Decisão | Motivo | Quando rever |
@@ -18,7 +20,7 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 | Uma entrada para Melado | O responsável confirmou que as duas abas são do mesmo produto. | Mudança real do catálogo. |
 | Fontes WOFF2 a partir dos TTFs entregues | Preservar a tipografia e reduzir o tamanho de transferência. | Necessidade de outro peso ou glifos. |
 | Git local agora; GitHub e hospedagem depois | Ordem definida no pedido inicial. | Etapa de publicação. |
-| Diretrizes de desenvolvimento como referência central | Preservar clareza, modificabilidade, consistência e decisões justificadas. | Mudanças nos requisitos ou nas condições de manutenção. |
+| Diretrizes de desenvolvimento como referência central | Preservar compreensão, modificabilidade, consistência e custo total de manutenção, com critérios explícitos para o trabalho assistido por IA. | Mudanças nos requisitos ou nas condições de manutenção. |
 
 ## Etapas
 
@@ -27,7 +29,7 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 3. **Base:** pasta independente criada; dois PNGs copiados sem alteração; três fontes convertidas para WOFF2; licenças OFL conservadas; documentação inicial escrita.
 4. **Página:** apresentação, cardápio com oito biscoitos e duas pipocas, história e navegação implementados em HTML e CSS. Conferências estáticas e HTTP realizadas; revisão visual e comercial pendente.
 5. **Versionamento:** repositório próprio com branch `main`. O conjunto inicial reúne os fontes, os recursos da marca utilizados e a documentação. A identificação do commit fica no histórico Git; não há remoto configurado ou publicação no GitHub nesta etapa.
-6. **Diretrizes de desenvolvimento:** princípios para decisões técnicas, código, validação e manutenção consolidados em `DIRETRIZES-DE-DESENVOLVIMENTO.md`, com regras de aplicação integradas ao `AGENTS.md`. A documentação está organizada em `Docs/`.
+6. **Diretrizes de desenvolvimento:** princípios para decisões técnicas, arquitetura, código, validação, entrega, manutenção e uso de IA consolidados em `DIRETRIZES-DE-DESENVOLVIMENTO.md`, com regras de aplicação integradas ao `AGENTS.md`. O guia distingue princípios gerais de decisões que dependem do contexto e inclui um bloco de instruções reutilizável em outros projetos. A documentação está organizada em `Docs/`.
 
 ## Validação registrada
 
@@ -41,12 +43,14 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 - Nas três fontes WOFF2, mapa de caracteres, ordem dos glifos, métricas horizontais e coordenadas foram comparados com os TTFs de origem, sem diferença nessas propriedades.
 - Sete pares de cores de texto e fundo calculados, com razões de contraste entre 5,45:1 e 13,29:1. Essa conferência dos pares do CSS não constitui uma auditoria completa de acessibilidade.
 - Servidor HTTP temporário entregou o índice e os nove arquivos de `public/` com resposta `200` e bytes iguais aos fontes, em um subcaminho `/con-affetto/`. CSS e WOFF2 tiveram os tipos MIME esperados. Recurso inexistente e caminhos de documentos fora da raiz pública retornaram `404`. O servidor foi encerrado ao fim da verificação.
+- Na revisão das diretrizes, os links locais renderizados em Markdown e seus destinos foram conferidos. As alterações ficaram restritas ao guia, às instruções e a este registro de andamento.
 
 A aparência no navegador, a experiência de uso em celular e a aprovação comercial ainda não estão verificadas. Não foram realizados testes visuais ou interação automatizada com navegador.
 
 ## Pendências para a revisão do responsável
 
 - Conferir o conjunto final de nomes e a apresentação visual em computador e celular.
+- Percorrer os fontes com o responsável para conferir a compreensão da estrutura e das escolhas de implementação.
 - Definir preços e unidades caso devam ser exibidos.
 - Selecionar fotografias reais caso o cardápio deva ter imagens dos produtos.
 - Definir os dados públicos de contato se forem incluídos.
