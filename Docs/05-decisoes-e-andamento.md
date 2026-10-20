@@ -4,7 +4,7 @@
 
 O responsável pediu participação nas decisões técnicas e documentação de projeto e código, seguindo a prática do Caixa da Feira. As etapas devem permanecer compreensíveis no chat e neste repositório. Mudanças estruturais precisam de motivo, arquivos afetados, verificação e limites declarados.
 
-A eficiência deve ser avaliada ao longo da vida do projeto: compreender, corrigir, operar e evoluir. Mais tempo inicial é aceitável quando reduz dificuldades posteriores. Pesquisa, documentação e estrutura adicional precisam contribuir para uma necessidade concreta.
+Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender, corrigir, operar e evoluir. Mais tempo inicial é aceitável quando reduz dificuldades posteriores. Pesquisa, documentação e estrutura adicional precisam contribuir para uma necessidade concreta. Essa prioridade é específica deste site; o modo de condução de outros projetos deve ser definido conforme seus próprios objetivos.
 
 ## Decisões de 20/10/2026
 

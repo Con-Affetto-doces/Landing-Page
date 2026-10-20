@@ -8,7 +8,7 @@ O material estudado permite reconstruir uma maneira de tomar decisões: entender
 
 Essa reconstrução reúne as notas de aprendizado do curso Web, as duas aulas de IA da seção Box e consultas pontuais às aulas originais. As notas contêm elaboração para estudo; as transcrições têm origem em reconhecimento automático de fala. Este texto é uma síntese interpretativa, e não uma descrição exaustiva de todos os projetos do instrutor. As fontes e o alcance das leituras estão registrados ao final.
 
-Há duas camadas de orientação aqui. A primeira interpreta os ensinamentos do material. A segunda estabelece uma política de adoção escolhida pelo responsável: preservar compreensão, capacidade de alteração e menor custo total de manutenção, mesmo quando isso exigir mais tempo no início. Essa prioridade local não deve ser atribuída como uma preferência absoluta do instrutor em qualquer contexto.
+Esta síntese interpreta critérios para decidir conforme o contexto. A prioridade relativa de compreensão humana, capacidade de alteração, prazo, desempenho e custos deve ser definida em cada projeto. Uma escolha feita para um projeto específico não estabelece uma preferência global do responsável nem uma regra absoluta do instrutor.
 
 ## 1. Começar pelas pessoas e pelo efeito que o projeto deve produzir
 
@@ -159,36 +159,37 @@ Os ensinamentos ficam mais úteis quando preservam os motivos das escolhas. Abai
 
 Essas perguntas preservam uma diferença entre princípio e receita. MVC, Next.js, JavaScript, Prettier, integração contínua ou modelos de IA aparecem em contextos. O que se transfere para outro projeto é o raciocínio que permite avaliar se a escolha serve ali.
 
-## 14. Política de adoção para trabalho assistido por IA
+## 14. Critérios de adoção para trabalho assistido por IA
 
-Por decisão do responsável, esta síntese deve orientar um modo de trabalhar que priorize eficiência ao longo da vida do projeto: compreender, corrigir, operar e evoluir com menor custo total. Um ritmo inicial menor é aceitável quando a análise necessária, a clareza do código ou uma verificação relevante reduzirem problemas posteriores.
+Adotar esta síntese exige conhecer as prioridades do projeto. Compreensão imediata, facilidade de alteração, prazo, desempenho e custos de operação e manutenção participam da decisão, sem uma ordem universal entre eles. Mais esforço inicial precisa de um benefício relevante para o caso; o responsável também pode preferir compreender a implementação depois da entrega, preservadas as condições necessárias de correção e verificação de quem a produz.
 
-Essa preferência também limita o investimento em organização. Mais documentação, pesquisa, abstrações ou testes não demonstram, por quantidade, que o trabalho ficou melhor. Cada esforço adicional deve esclarecer uma decisão, preservar um comportamento, facilitar uma alteração ou reduzir uma consequência relevante. Quando houver evidência suficiente para executar a próxima ação segura, a investigação deve dar lugar à execução.
+O investimento em organização segue esse mesmo critério. Mais documentação, pesquisa, abstrações ou testes não demonstram, por quantidade, que o trabalho ficou melhor. Cada esforço adicional deve esclarecer uma decisão, preservar um comportamento, facilitar uma alteração ou reduzir uma consequência relevante. Quando houver evidência suficiente para executar a próxima ação segura, a investigação deve dar lugar à execução.
 
-Um ciclo de trabalho compatível com essa política é:
+Um ciclo de trabalho ajustável a essas prioridades é:
 
 1. Entender o problema, os usuários, as restrições e o resultado esperado.
 2. Inspecionar o caminho existente e os contratos que podem mudar a solução.
 3. Explicar as decisões relevantes, resolver ambiguidades materiais e delimitar a etapa completa.
 4. Implementar com responsabilidades reconhecíveis e complexidade proporcional.
 5. Verificar o comportamento na fronteira adequada e registrar o alcance da evidência.
-6. Revisar o efeito, atualizar a documentação necessária e registrar uma mudança coerente no Git.
+6. Revisar o efeito, atualizar a documentação necessária e registrar uma mudança coerente no Git quando o fluxo do projeto incluir commits.
 7. Observar a entrega no ambiente que realmente importa e usar o retorno para o próximo ciclo.
 
-Esse ciclo não exige uma aprovação humana para cada operação rotineira. O responsável deve participar das decisões que alteram objetivo, custo, risco ou forma de manter o projeto. As escolhas já autorizadas e as ações reversíveis necessárias continuam sendo executadas dentro do escopo.
+O detalhamento desse ciclo e o momento das explicações dependem do projeto. Ele não exige uma aprovação humana para cada operação rotineira. O responsável deve participar das decisões que alteram objetivo, custo, risco ou forma de manter o projeto. As escolhas já autorizadas e as ações reversíveis necessárias continuam sendo executadas dentro do escopo.
 
 ## 15. Como reutilizar este documento em outro projeto
 
-O corpo desta síntese é independente de linguagem, framework, domínio comercial e provedor. Pode ser levado para outro repositório como referência, preservando seus limites e a distinção entre ensinamentos interpretados e política de adoção. Os caminhos locais das fontes são opcionais para consulta; não são necessários para entender as diretrizes.
+O corpo desta síntese é independente de linguagem, framework, domínio comercial e provedor. Pode ser levado para outro repositório como referência, preservando seus limites e definindo a política de adoção conforme o destino. As prioridades de outro projeto não são importadas automaticamente. Os caminhos locais das fontes são opcionais para consulta; não são necessários para entender as diretrizes.
 
 No novo projeto, o `AGENTS.md` deve apontar para a localização escolhida e acrescentar somente o contexto que muda sua aplicação: objetivo, tecnologias existentes, contratos importantes, dados a proteger, comandos de verificação, critérios de entrega e restrições de publicação. Não é necessário reproduzir o documento inteiro nas instruções.
 
 O bloco abaixo é uma adaptação operacional desta síntese para agentes. Ele não é uma citação do instrutor. Deve ser combinado com as instruções e autorizações específicas do repositório.
 
 ```text
-Priorize compreensão, capacidade de alteração e custo total de manutenção,
-mesmo quando isso exigir mais tempo no início. Use as diretrizes como
-critérios de decisão e demonstre sua aplicação no código e nos resultados.
+Avalie compreensão, capacidade de alteração, prazo, desempenho e custos
+conforme os requisitos e as prioridades explícitas do projeto. Ajuste o
+momento das explicações à necessidade do responsável. Use as diretrizes
+como critérios de decisão e demonstre sua aplicação no código e nos resultados.
 
 Antes de alterar comportamento, entenda o problema, o resultado esperado,
 o caminho existente e os contratos relevantes. Explique escolhas que mudem
