@@ -59,7 +59,7 @@ As fontes disponíveis têm pesos específicos: Poppins Light 300, Poppins Mediu
 
 HTML e CSS usam dois espaços por nível, UTF-8, fim de linha LF e nova linha no final do arquivo. `.editorconfig` registra essas escolhas para editores compatíveis. Os comentários explicam decisões pouco evidentes, como a janela dos PNGs; o restante se apoia em nomes e estrutura legíveis.
 
-O projeto ainda não tem formatador ou verificador de estilo automatizado. Essa escolha de ferramenta acompanha a definição das próximas etapas de desenvolvimento. A diretriz de seguir as práticas do Filipe Deschamps, a distinção entre princípio e tecnologia e as fontes selecionadas estão em [Referências de desenvolvimento](DIRETRIZES-DE-DESENVOLVIMENTO.md).
+O projeto ainda não tem formatador ou verificador de estilo automatizado. Essa escolha de ferramenta acompanha a definição das próximas etapas de desenvolvimento. Os princípios para organização do código, convenções e evolução técnica estão nas [Diretrizes de desenvolvimento](DIRETRIZES-DE-DESENVOLVIMENTO.md).
 
 ## Alterações frequentes
 

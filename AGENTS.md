@@ -2,6 +2,7 @@
 
 - Responder em português do Brasil. Explicar a finalidade e o custo de uma tecnologia antes de incorporá-la ao projeto.
 - Seguir como diretriz central as práticas de código e desenvolvimento ensinadas por Filipe Deschamps no curso.dev, aplicadas ao contexto deste projeto. O guia completo e a classificação das 49 notas estão em `Docs/DIRETRIZES-DE-DESENVOLVIMENTO.md`; consultar uma aula específica quando houver dúvida concreta.
+- Manter a procedência dessas diretrizes neste arquivo e no guia completo. No restante da documentação, dos comentários e da interface, apresentá-las como diretrizes do projeto, sem atribuições ao curso, ao autor ou ao processo de leitura das notas.
 - Escopo atual: apresentação da Con Affetto e cardápio. Usar a identidade visual existente e conteúdo confirmado pelo responsável pela marca.
 - Manter o projeto estático enquanto o comportamento pedido couber em HTML e CSS. Adicionar JavaScript ou dependências somente para uma necessidade concreta, registrando a decisão.
 - A base HTML/CSS é a primeira proposta técnica local. Evoluir as escolhas com o responsável, explicando os critérios. Preservar clareza, modificabilidade, crescimento orgânico e a convenção existente; não importar automaticamente a stack ou a estrutura do TabNews.

@@ -18,7 +18,7 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 | Uma entrada para Melado | O responsável confirmou que as duas abas são do mesmo produto. | Mudança real do catálogo. |
 | Fontes WOFF2 a partir dos TTFs entregues | Preservar a tipografia e reduzir o tamanho de transferência. | Necessidade de outro peso ou glifos. |
 | Git local agora; GitHub e hospedagem depois | Ordem definida no pedido inicial. | Etapa de publicação. |
-| Práticas do Filipe Deschamps como diretriz central | Instrução do responsável; análise do conteúdo das 49 notas temáticas, com apoio do Luna. | Consultar aulas específicas nas próximas decisões. |
+| Diretrizes de desenvolvimento como referência central | Preservar clareza, modificabilidade, consistência e decisões justificadas. | Mudanças nos requisitos ou nas condições de manutenção. |
 
 ## Etapas
 
@@ -27,7 +27,7 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 3. **Base:** pasta independente criada; dois PNGs copiados sem alteração; três fontes convertidas para WOFF2; licenças OFL conservadas; documentação inicial escrita.
 4. **Página:** apresentação, cardápio com oito biscoitos e duas pipocas, história e navegação implementados em HTML e CSS. Conferências estáticas e HTTP realizadas; revisão visual e comercial pendente.
 5. **Versionamento:** repositório próprio com branch `main`. O conjunto inicial reúne os fontes, os recursos da marca utilizados e a documentação. A identificação do commit fica no histórico Git; não há remoto configurado ou publicação no GitHub nesta etapa.
-6. **Referências de desenvolvimento:** a seleção inicial de oito notas foi ampliada a pedido do responsável. O principal leu 29 notas temáticas e o índice; o Luna leu integralmente outras 20, em tarefa somente leitura expressamente solicitada. As diretrizes, a classificação e a procedência estão em `DIRETRIZES-DE-DESENVOLVIMENTO.md`; as regras de aplicação foram integradas ao `AGENTS.md`. A documentação foi consolidada em `Docs/`, como solicitado.
+6. **Diretrizes de desenvolvimento:** princípios para decisões técnicas, código, validação e manutenção consolidados em `DIRETRIZES-DE-DESENVOLVIMENTO.md`, com regras de aplicação integradas ao `AGENTS.md`. A documentação está organizada em `Docs/`.
 
 ## Validação registrada
 
@@ -41,7 +41,6 @@ O responsável pediu participação nas decisões técnicas e documentação de 
 - Nas três fontes WOFF2, mapa de caracteres, ordem dos glifos, métricas horizontais e coordenadas foram comparados com os TTFs de origem, sem diferença nessas propriedades.
 - Sete pares de cores de texto e fundo calculados, com razões de contraste entre 5,45:1 e 13,29:1. Essa conferência dos pares do CSS não constitui uma auditoria completa de acessibilidade.
 - Servidor HTTP temporário entregou o índice e os nove arquivos de `public/` com resposta `200` e bytes iguais aos fontes, em um subcaminho `/con-affetto/`. CSS e WOFF2 tiveram os tipos MIME esperados. Recurso inexistente e caminhos de documentos fora da raiz pública retornaram `404`. O servidor foi encerrado ao fim da verificação.
-- O guia foi reconciliado contra os nomes dos arquivos do vault: todas as 49 notas temáticas constam uma vez na tabela, com 29 leituras pelo principal e 20 pelo Luna. A classificação final é de 35 aplicações imediatas, nove condicionais e cinco principalmente pessoais nesta fase. O índice foi lido separadamente.
 
 A aparência no navegador, a experiência de uso em celular e a aprovação comercial ainda não estão verificadas. Não foram realizados testes visuais ou interação automatizada com navegador.
 
@@ -52,6 +51,6 @@ A aparência no navegador, a experiência de uso em celular e a aprovação come
 - Selecionar fotografias reais caso o cardápio deva ter imagens dos produtos.
 - Definir os dados públicos de contato se forem incluídos.
 - Na etapa posterior, definir repositório GitHub, visibilidade, licença do código, hospedagem e domínio.
-- Definir o mecanismo compartilhado de formatação ao tratar das ferramentas de desenvolvimento, consultando a aula específica sobre Prettier se necessário.
+- Definir o mecanismo compartilhado de formatação ao tratar das ferramentas de desenvolvimento.
 
 O site ainda não foi publicado. Não há sincronização contínua, importador da planilha ou ligação ao banco do comércio.

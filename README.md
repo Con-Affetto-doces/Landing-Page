@@ -21,11 +21,11 @@ Abra `http://127.0.0.1:4173`. O terminal precisa continuar aberto; `Ctrl+C` ence
 - [Identidade visual](Docs/03-identidade-visual.md): cores, fontes, arquivos e decisões de aplicação da marca.
 - [Desenvolvimento, validação e Git](Docs/04-desenvolvimento-e-git.md): prévia, conferência, commits e futura publicação.
 - [Decisões e andamento](Docs/05-decisoes-e-andamento.md): etapas realizadas, evidência e pendências.
-- [Diretrizes de desenvolvimento do curso.dev](Docs/DIRETRIZES-DE-DESENVOLVIMENTO.md): guia das práticas do Filipe Deschamps aplicáveis ao projeto, com a análise das 49 notas temáticas.
+- [Diretrizes de desenvolvimento](Docs/DIRETRIZES-DE-DESENVOLVIMENTO.md): princípios e critérios para decisões técnicas, código, validação e manutenção.
 
 Para mudar um produto, edite a lista correspondente em `public/index.html`. Para mudar espaçamento, tipografia ou cores, edite `public/styles.css`. A documentação acompanha as mudanças de comportamento e estrutura.
 
-A base HTML/CSS é a primeira proposta local. As próximas decisões de tecnologia e código seguem o contexto do site e as práticas do curso.dev, com critérios explicados ao responsável antes de incorporar complexidade.
+A base HTML/CSS é a primeira proposta local. As próximas decisões de tecnologia e código seguem o contexto do site e as diretrizes de desenvolvimento, com critérios explicados ao responsável antes de incorporar complexidade.
 
 ## Estado
 
