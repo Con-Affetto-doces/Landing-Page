@@ -103,6 +103,18 @@ Na operação futura, reverter o Git local não muda a VPS. A hospedagem precisa
 
 Planilha, banco do caixa, dados de atendimento, backups e documentos completos da marca ficam fora do repositório. `node_modules/`, `.astro/`, `dist/` e configurações locais são ignorados. `.gitignore` não remove arquivos já rastreados: revisar sempre a seleção.
 
-Git registra a história local. GitHub será o destino do código. A VPS com Coolify é o destino de hospedagem solicitado; sua preparação está documentada, mas a publicação ainda não foi executada. Definir nome, visibilidade e licença do repositório antes dessa etapa.
+Git registra a história local. O remoto `origin` aponta para o repositório público [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page), indicado pelo responsável. A branch local `main` acompanha `origin/main`. O primeiro envio publicou o commit `e0e8221`, e a referência remota foi conferida após o push.
 
-Depois de um push real, confirmar a branch remota com `git ls-remote --heads origin refs/heads/main`. Commit local e dry-run não confirmam publicação. Build local da imagem também não confirma implantação na VPS.
+Neste clone, a autenticação HTTPS usa a sessão já existente do GitHub CLI, por meio do helper `gh auth git-credential` configurado apenas no Git local do repositório. Essa configuração não é versionada nem acompanha novos clones. A autenticação não exige incluir tokens nos arquivos versionados.
+
+Para publicar os próximos commits:
+
+```bash
+git push origin main
+git rev-parse HEAD
+git ls-remote --heads origin refs/heads/main
+```
+
+O SHA local e o SHA da branch remota devem corresponder. A licença do código continua pendente de definição. A VPS com Coolify é o destino de hospedagem solicitado; sua preparação está documentada, mas a implantação ainda não foi executada.
+
+Commit local e dry-run não confirmam publicação. Build local da imagem também não confirma implantação na VPS.

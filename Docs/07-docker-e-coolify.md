@@ -2,9 +2,9 @@
 
 ## Objetivo e estado
 
-Executar o site com SSR na VPS do responsável, usando Coolify para construir e operar a aplicação. Dockerfile e imagem foram testados localmente; nenhum recurso da VPS ou do GitHub foi criado ou alterado.
+Executar o site com SSR na VPS do responsável, usando Coolify para construir e operar a aplicação. Dockerfile e imagem foram testados localmente. O código está publicado no repositório público [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page); nenhum recurso da VPS foi criado ou alterado.
 
-A configuração atende o site na raiz do domínio, como `https://seu-dominio/`. Domínio, DNS, TLS e origem Git ainda serão definidos na etapa de publicação. A documentação oficial consultada pode diferir da versão instalada na VPS; conferir os campos equivalentes ao configurar a aplicação.
+A configuração atende o site na raiz do domínio, como `https://seu-dominio/`. Domínio, DNS e TLS ainda serão definidos na etapa de implantação. A documentação oficial consultada pode diferir da versão instalada na VPS; conferir os campos equivalentes ao configurar a aplicação.
 
 ## O que a imagem contém
 
@@ -57,10 +57,11 @@ docker stop con-affetto-site-local
 
 ## Configuração futura no Coolify
 
-Usar uma aplicação construída a partir do repositório Git do site, com acesso compatível com sua visibilidade. Depois de publicar os fontes na etapa correspondente, configurar:
+Usar uma aplicação construída a partir do repositório Git do site, já publicado, com acesso compatível com sua visibilidade:
 
 | Campo ou responsabilidade | Configuração |
 | --- | --- |
+| Repositório | `https://github.com/Con-Affetto-doces/Landing-Page.git` (público). |
 | Build pack / Build strategy | Dockerfile. |
 | Branch | `main`, se mantida como branch de publicação. |
 | Base Directory | Raiz do repositório (`/`). |

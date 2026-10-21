@@ -24,7 +24,8 @@ Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender
 | Doce Maria excluído | Instrução expressa: o produto não é da marca. | Apenas com nova instrução do responsável. |
 | Uma entrada para Melado | O responsável confirmou que as duas abas são do mesmo produto. | Mudança real do catálogo. |
 | Fontes WOFF2 a partir dos TTFs entregues | Preservar a tipografia e reduzir o tamanho de transferência. | Necessidade de outro peso ou glifos. |
-| Git local agora; GitHub e hospedagem depois | Ordem definida no pedido inicial. | Etapa de publicação. |
+| Git local, seguido de GitHub e hospedagem | Ordem definida no pedido inicial; código já publicado no GitHub. | Etapa de implantação na VPS. |
+| Repositório público `Con-Affetto-doces/Landing-Page`, branch `main` | Endereço fornecido pelo responsável; repositório estava vazio. | Se mudar a origem do código ou sua visibilidade. |
 | Diretrizes de desenvolvimento como referência central | Preservar compreensão, modificabilidade, consistência e custo total de manutenção, com critérios explícitos para o trabalho assistido por IA. | Mudanças nos requisitos ou nas condições de manutenção. |
 
 ## Etapas
@@ -33,11 +34,12 @@ Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender
 2. **Escopo:** responsável confirmou apresentação e cardápio e indicou a planilha de receitas atuais. Doce Maria excluído.
 3. **Base:** pasta independente criada; dois PNGs copiados sem alteração; três fontes convertidas para WOFF2; licenças OFL conservadas; documentação inicial escrita.
 4. **Página:** apresentação, cardápio com oito biscoitos e duas pipocas, história e navegação implementados em HTML e CSS. Conferências estáticas e HTTP realizadas; revisão visual e comercial pendente.
-5. **Versionamento:** repositório próprio com branch `main`. O conjunto inicial reúne os fontes, os recursos da marca utilizados e a documentação. A identificação do commit fica no histórico Git; não há remoto configurado ou publicação no GitHub nesta etapa.
+5. **Versionamento:** repositório próprio com branch `main`. O conjunto inicial reúne os fontes, os recursos da marca utilizados e a documentação. A identificação do commit fica no histórico Git; naquela etapa ainda não havia remoto ou publicação no GitHub.
 6. **Diretrizes de desenvolvimento:** princípios para decisões técnicas, arquitetura, código, validação, entrega, manutenção e uso de IA consolidados em `DIRETRIZES-DE-DESENVOLVIMENTO.md`, com regras de aplicação integradas ao `AGENTS.md`. O guia distingue princípios gerais de decisões que dependem do contexto e inclui um bloco de instruções reutilizável em outros projetos. A documentação está organizada em `Docs/`.
 7. **Planejamento de SSR:** requisito registrado sem incluir banco de dados. Comparação inicial documentada e outras alternativas discutidas com o responsável. Naquela etapa a base permaneceu HTML/CSS.
 8. **Experimento com Astro:** cardápio extraído para TypeScript, página e apresentação dos produtos compostas por componentes, CSS preservado e servidor Node standalone configurado. Dependências e lockfile adicionados; build inclui verificação de tipos.
-9. **Docker e Coolify:** imagem de produção construída e executada localmente com Node LTS e healthcheck. Parâmetros de futura publicação documentados em `07-docker-e-coolify.md`; VPS e GitHub não foram alterados.
+9. **Docker e Coolify:** imagem de produção construída e executada localmente com Node LTS e healthcheck. Parâmetros de futura publicação documentados em `07-docker-e-coolify.md`; naquela etapa VPS e GitHub não foram alterados.
+10. **GitHub:** remoto `origin` configurado com o endereço fornecido pelo responsável, `https://github.com/Con-Affetto-doces/Landing-Page.git`. Primeiro push real de `main` concluído; commit `e0e8221` confirmado na branch remota. A documentação desta etapa registra o destino e mantém a implantação na VPS como pendente.
 
 ## Validação registrada
 
@@ -70,7 +72,16 @@ Neste projeto, a eficiência deve ser avaliada ao longo de sua vida: compreender
 - Revisão independente de código e contratos do adaptador não encontrou bloqueadores. A tentativa de abrir a prévia constatou ausência de navegador disponível na ferramenta desta sessão.
 - Vinte e duas referências locais dos documentos alterados e a ausência de erros de whitespace no diff conferidas.
 
-A aparência no navegador, a experiência em celular e a aprovação comercial continuam pendentes. A imagem local não comprova domínio, TLS ou integração real com o proxy Coolify. Não houve publicação na VPS ou no GitHub.
+A aparência no navegador, a experiência em celular e a aprovação comercial continuam pendentes. A imagem local não comprova domínio, TLS ou integração real com o proxy Coolify. Não houve implantação na VPS.
+
+### Publicação do código no GitHub
+
+- O repositório informado estava público e sem referências Git. A conta autenticada tinha permissão de envio; a visibilidade existente foi preservada.
+- Arquivos e histórico local conferidos antes do envio: sem planilhas, bancos, arquivos de ambiente ou indicadores de credenciais encontrados. Fontes, recursos públicos e documentação compõem o histórico publicado.
+- Backup central criado e validado antes da configuração do remoto e da atualização dos documentos.
+- Primeiro push de `main` concluído, com acompanhamento de `origin/main`. `git ls-remote --heads origin refs/heads/main` devolveu o mesmo SHA de `git rev-parse HEAD`: `e0e8221823cbf8950a702604fb9a42737063c331`.
+- Helper de autenticação do GitHub CLI configurado apenas neste clone, reutilizando a sessão existente. Nenhum token foi acrescentado aos arquivos versionados.
+- O endereço do código é [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page). Publicação do código e implantação da aplicação têm verificações distintas.
 
 ## Pendências para a revisão do responsável
 
@@ -80,7 +91,7 @@ A aparência no navegador, a experiência em celular e a aprovação comercial c
 - Definir preços e unidades caso devam ser exibidos.
 - Selecionar fotografias reais caso o cardápio deva ter imagens dos produtos.
 - Definir os dados públicos de contato se forem incluídos.
-- Na etapa posterior, definir repositório GitHub, visibilidade e licença do código; configurar domínio e aplicação na VPS com Coolify e verificar o acesso real.
+- Definir a licença do código; configurar domínio e aplicação na VPS com Coolify e verificar o acesso real.
 - Definir o mecanismo compartilhado de formatação ao tratar das ferramentas de desenvolvimento.
 
-O site ainda não foi publicado. Não há sincronização contínua, importador da planilha ou ligação ao banco do comércio.
+O código está disponível no GitHub; a aplicação ainda não foi implantada na VPS. Não há sincronização contínua, importador da planilha ou ligação ao banco do comércio.

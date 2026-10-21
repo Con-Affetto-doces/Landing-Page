@@ -21,4 +21,4 @@
 - Verificar conteúdo, referências locais e comportamento afetado. Distinguir conferência estática, resposta HTTP e aprovação visual no navegador.
 - `npm run build` verifica os tipos antes de compilar. Mudanças de renderização precisam de conferência no servidor de produção; HTML completo sozinho não prova SSR. Para mudanças no Docker, construir e executar a imagem e conferir a resposta e o healthcheck. O procedimento de Docker/Coolify está em `Docs/07-docker-e-coolify.md`.
 - Versionar conjuntos coerentes após conferir `git diff --cached` e `git status`. Não incluir alterações alheias.
-- GitHub e hospedagem são etapas posteriores ao desenvolvimento local solicitado. Registrar publicação apenas após verificar o remoto ou o resultado da hospedagem.
+- O código está no repositório público `Con-Affetto-doces/Landing-Page`, com remoto `origin` e branch `main`. A implantação na VPS com Coolify continua pendente. Registrar publicação apenas após verificar a branch remota ou o resultado da hospedagem, conforme a etapa.

@@ -56,7 +56,7 @@ Versões e comandos estão em [Tecnologias e código](02-tecnologias-e-codigo.md
 
 Docker e os parâmetros do Coolify estão em [Docker e Coolify](07-docker-e-coolify.md). A imagem usa a porta interna `4321` e escuta em `0.0.0.0`. O navegador acessará o domínio através do proxy, cuja configuração e TLS dependem da futura implantação.
 
-GitHub será o destino do código. [GitHub Pages oferece hospedagem estática](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) e, sozinho, não executa este SSR.
+O código está no repositório público [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page). [GitHub Pages oferece hospedagem estática](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) e, sozinho, não executa este SSR.
 
 ## Critérios e limites
 
@@ -64,6 +64,6 @@ GitHub será o destino do código. [GitHub Pages oferece hospedagem estática](h
 - SSR demonstrado em servidor compilado, com controle estático.
 - Build e execução da imagem conferidos, incluindo healthcheck e usuário sem root.
 - Comandos e responsabilidades documentados junto do código.
-- Revisão visual e comercial, teste na VPS e publicação registrados como pendentes.
+- Revisão visual e comercial, teste na VPS e implantação registrados como pendentes.
 
 Banco, autenticação, administração, pedidos e integração com o Caixa da Feira permanecem fora desta etapa. Os resultados detalhados ficam em [Decisões e andamento](05-decisoes-e-andamento.md).

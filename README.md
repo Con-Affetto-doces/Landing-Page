@@ -45,6 +45,6 @@ Para mudar um produto, edite `src/data/cardapio.ts`. Para mudar o visual, edite 
 
 ## Estado
 
-Experimento local com Astro e Docker implementado. A revisão visual em computador e celular e a aprovação comercial continuam pendentes. GitHub, domínio e publicação na VPS são etapas posteriores.
+Astro SSR e Docker implementados, com código publicado na branch `main` do repositório público [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page). A revisão visual em computador e celular e a aprovação comercial continuam pendentes. Domínio e publicação na VPS são etapas posteriores.
 
-A planilha, o banco do caixa e os documentos completos da marca permanecem fora do repositório. Os recursos públicos usados e as licenças OFL das fontes ficam em `public/assets/`. A licença do código e a visibilidade do futuro repositório GitHub ainda precisam ser definidas.
+A planilha, o banco do caixa e os documentos completos da marca permanecem fora do repositório. Os recursos públicos usados e as licenças OFL das fontes ficam em `public/assets/`. A licença do código ainda precisa ser definida; as licenças das fontes e os direitos sobre a identidade permanecem descritos em [Identidade visual](Docs/03-identidade-visual.md).
