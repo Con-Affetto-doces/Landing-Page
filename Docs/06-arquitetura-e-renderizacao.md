@@ -1,64 +1,69 @@
 # Arquitetura e renderização
 
-## Estado e requisitos
+## Decisão e estado
 
-O responsável definiu SSR como requisito e informou que o site não precisa de banco de dados nesta etapa. A escolha do frontend deve considerar o perfil do projeto, sem preferência prévia por React/Next.js.
+O site apresenta a marca e o cardápio. O responsável definiu SSR, dispensou banco nesta etapa e pediu escolher a tecnologia pela adequação ao projeto. Após comparação, autorizou o experimento com Astro e solicitou Docker para futura publicação na VPS com Coolify.
 
-A implementação disponível continua sendo HTML e CSS em `public/`. Este documento registra a comparação e uma proposta técnica; não confirma instalação de framework, execução de SSR ou escolha de hospedagem.
+A versão local usa Astro, TypeScript, CSS próprio e adaptador Node standalone. Build, servidor compilado, SSR por requisição e execução da imagem foram verificados. A aprovação visual, o uso real e a configuração da VPS continuam pendentes.
 
-O produto continua sendo apresentação da marca e cardápio, com os nomes e a origem editorial descritos em [Projeto e cardápio](01-projeto-e-cardapio.md). Identidade visual, fontes, conteúdo confirmado e navegação acessível são referências para a migração. O visual ainda depende da revisão do responsável.
+A escolha aproveita o conteúdo e os estilos existentes e organiza a composição do cardápio. É uma decisão de adequação ao escopo, sem benchmark comparativo entre frameworks. A experiência de manutenção pode justificar sua revisão.
 
-## O que significa SSR nesta proposta
+## Responsabilidades e interação
 
-SSR significa montar o HTML da página no servidor durante uma requisição. Gerar o HTML uma vez no build é pré-renderização estática. Ambos podem entregar conteúdo completo ao navegador; a presença desse conteúdo, sozinha, não distingue os modos. Essa diferença aparece na [renderização sob demanda do Astro](https://docs.astro.build/en/guides/on-demand-rendering/).
-
-O requisito está sendo interpretado como SSR por requisição. A arquitetura não depende de banco: o servidor pode montar a página a partir de dados editoriais versionados. Alterar esses dados ainda exigirá publicar a versão correspondente do site; SSR não cria uma interface administrativa ou atualização automática da planilha.
-
-## Responsabilidades propostas
-
-| Parte | Responsabilidade |
-| --- | --- |
-| Dados do cardápio | Arquivo TypeScript com categorias, nomes e notas confirmadas, usado como fonte única pela página. |
-| Componentes de apresentação | Cabeçalho, apresentação, grupos de produtos, história e rodapé, conforme as responsabilidades já visíveis no HTML. |
-| Página e layout | Compor os componentes, definir metadados e produzir o HTML no servidor. |
-| CSS e recursos da marca | Aplicar a identidade existente, adaptar o layout às telas e entregar fontes e imagens locais. |
-| Código no navegador | Atender interações que precisem dele; a leitura principal do cardápio deve continuar disponível sem JavaScript. |
-
-O framework pode atender páginas e recursos no mesmo projeto. Uma API HTTP separada não tem um consumidor ou comportamento necessário no escopo atual. O arquivo editorial do cardápio pode ser usado diretamente pelo renderizador.
-
-O CSS existente é o ponto de partida para a composição visual. A convenção de estilos e uma eventual biblioteca devem ser avaliadas pelo benefício concreto. O requisito de SSR não determina uma biblioteca de componentes, uma estratégia de CSS ou um redesenho da marca.
-
-## Comparação de frontend
-
-| Critério | Astro + TypeScript | Next.js + React + TypeScript |
+| Parte | Responsabilidade | Implementação |
 | --- | --- | --- |
-| Composição | Componentes `.astro`, com uma estrutura próxima de HTML e CSS. | Componentes React e convenções do App Router. |
-| SSR | Adaptador de runtime e configuração das páginas para renderização sob demanda. | Rotas configuradas para execução por requisição; ser Server Component não significa, por si, executar a cada acesso. |
-| Interação no navegador | Scripts ou componentes interativos acrescentados onde necessários. | Client Components para estado, eventos e APIs do navegador. |
-| Adequação ao escopo atual | Minha avaliação: combina com conteúdo editorial, apresentação e cardápio, preservando uma relação direta com HTML/CSS. | Minha avaliação: ganha peso se trabalhar com React e App Router desde o início for um objetivo do projeto. |
+| Dados editoriais | Nomes, categorias e notas confirmadas. | `src/data/cardapio.ts`. |
+| Cardápio | Compor as duas categorias e a apresentação dos produtos. | `Cardapio.astro` e `ItemCardapio.astro`. |
+| Página | Apresentação, navegação, história e rodapé. | `src/pages/index.astro`. |
+| Documento | HTML, idioma, metadados, fonte pré-carregada e CSS global. | `src/layouts/SiteLayout.astro`. |
+| Visual e marca | Distribuição, adaptação às telas, fontes e logotipos. | CSS próprio e recursos em `public/assets/`. |
+| Servidor | Receber requisições, renderizar a página e servir os recursos. | Adaptador Node; `dist/server/entry.mjs`. |
+| Empacotamento | Compilar e executar uma versão de produção em Node LTS. | `Dockerfile`. |
 
-Os [componentes Astro](https://docs.astro.build/en/basics/astro-components/) produzem HTML sem acrescentar um runtime de cliente por padrão. Para SSR em Node, o [adaptador oficial](https://docs.astro.build/en/guides/integrations-guide/node/) oferece modo standalone, incluindo atendimento de páginas e recursos.
+A requisição percorre servidor → página → layout e componentes → HTML. O navegador recebe o conteúdo e carrega os recursos. O renderizador usa os dados diretamente; não há uma API HTTP intermediária.
 
-No Next.js, a divisão entre [Server e Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) permite separar renderização e interação. A função [`connection()`](https://nextjs.org/docs/app/api-reference/functions/connection) pode vincular a execução à requisição quando não há outra dependência de dados do pedido. Isso precisa ser configurado e verificado na versão adotada.
+O arquivo editorial é incorporado à versão compilada. Editar os produtos exige novo build e publicação. SSR não sincroniza a planilha nem cria administração ou persistência.
 
-**Recomendação provisória: Astro com TypeScript e adaptador Node.** A justificativa é o escopo conhecido e a proximidade com a base HTML/CSS existente. Essa é uma avaliação de adequação, sem medição de desempenho ou implementação comparativa realizada. Next.js permanece uma alternativa válida; as responsabilidades propostas não dependem dessa preferência de framework.
+## SSR e limite da evidência
 
-Versões, requisitos de Node, comandos e dependências devem ser conferidos e registrados quando o framework for incorporado. Não há configuração de runtime adicionada nesta etapa.
+SSR nesta implementação significa gerar o HTML no servidor por requisição. Pré-renderização estática gera o HTML no build; ambas podem entregar conteúdo completo. `output: "server"` seleciona SSR por padrão, conforme a [documentação do Astro](https://docs.astro.build/en/guides/on-demand-rendering/).
 
-## Hospedagem
+A configuração usa `@astrojs/node` com modo standalone e sessões desativadas. Não existe uma cópia `public/index.html` que possa atender a rota antes do renderizador. O manifesto compilado marca `/` com `prerender: false`, e o adaptador instalado encaminha a rota para a renderização.
 
-A versão SSR precisa de execução de servidor ou funções compatíveis com o framework. Um processo Node é uma possibilidade, sem provedor assumido: o Astro dispõe do adaptador citado, e o [Next.js também pode ser executado como servidor Node](https://nextjs.org/docs/app/getting-started/deploying).
+Para demonstrar execução, a verificação foi feita em uma cópia isolada dos fontes:
 
-GitHub pode continuar sendo o destino do código. [GitHub Pages é hospedagem estática](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) e, sozinho, não atende SSR por requisição. A publicação exigirá definir runtime, processo de build, execução e entrega dos recursos. Não há hospedagem contratada ou configurada.
+1. Adicionar um identificador aleatório no frontmatter de `Cardapio.astro` e incluí-lo em um atributo temporário do HTML.
+2. Compilar e iniciar o servidor de produção da cópia.
+3. Solicitar duas vezes a mesma rota `/` e conferir que os identificadores são diferentes.
+4. Compilar o controle com renderização estática, servir o arquivo gerado e repetir os pedidos: o identificador permanece igual.
+5. Conferir os hashes dos fontes do projeto original para garantir que a instrumentação permaneceu apenas na cópia.
 
-## Etapas e critérios de migração
+O controle mostrou que o instrumento distingue execução por requisição de valor fixado no build. O HTML e a imagem entregues não incluem essa instrumentação. A conferência HTTP normal validou o conteúdo completo e os recursos separadamente.
 
-1. Definir o frontend pelos requisitos e custos apresentados, explicando o modelo de componentes e a configuração de SSR.
-2. Incorporar configuração, scripts e lockfile reproduzíveis, com versões compatíveis; preservar a base anterior no histórico Git.
-3. Extrair o cardápio para dados versionados e compor a página com responsabilidades reconhecíveis, conservando os oito biscoitos, as duas pipocas e o tratamento confirmado de Melado e Doce Maria.
-4. Reaproveitar os recursos originais e o CSS como referência, conferindo caminhos e conteúdo. Mudanças visuais devem ter seu próprio motivo e revisão.
-5. Compilar e executar o servidor de produção local. Conferir o HTML entregue, metadados, navegação, arquivos, fonte e conteúdo sem depender da execução de JavaScript no navegador.
-6. Demonstrar que a rota é renderizada em runtime, e não apenas no build. Usar o contrato do framework e, quando necessário, instrumentação controlada da renderização durante o teste; uma resposta HTTP com HTML completo não prova SSR sozinha.
-7. Atualizar os comandos e a documentação conforme o que foi executado. Registrar a revisão visual e comercial separadamente da prova de servidor e da futura publicação.
+## Comparação que levou ao experimento
 
-O critério de saída é uma página com o conteúdo e os recursos preservados, SSR demonstrado no modo de produção local, comandos reproduzíveis e limites declarados. Banco, autenticação, administração, pedidos e integração com o Caixa da Feira continuam fora desta etapa.
+Foram discutidos Astro, React/Next, Vue/Nuxt, SvelteKit, Angular SSR e Express com templates, além de opções de estilos. Os critérios foram objetivo atual, modo de escrever e manter componentes, interatividade necessária e operação.
+
+Astro foi recomendado pela composição de conteúdo próxima da base existente e pela possibilidade de acrescentar comportamento no navegador conforme a necessidade. A escolha também tem custo: convenções próprias, dependências, compilação e servidor de execução.
+
+Next e as demais alternativas continuam tecnicamente viáveis. Familiaridade com uma ferramenta, requisitos de interação compartilhada ou uma necessidade concreta de biblioteca podem alterar a avaliação. Não há uma limitação visual imposta pela escolha atual.
+
+CSS próprio preserva a identidade existente. Uma biblioteca de interface não foi necessária para a migração e deve ser avaliada quando resolver um comportamento ou custo concreto.
+
+## Execução e hospedagem
+
+Versões e comandos estão em [Tecnologias e código](02-tecnologias-e-codigo.md) e [Desenvolvimento e Git](04-desenvolvimento-e-git.md). A imagem usa Node 24.22.0 LTS; o servidor local também foi conferido em Node 26.12.0. A configuração atende a raiz do domínio.
+
+Docker e os parâmetros do Coolify estão em [Docker e Coolify](07-docker-e-coolify.md). A imagem usa a porta interna `4321` e escuta em `0.0.0.0`. O navegador acessará o domínio através do proxy, cuja configuração e TLS dependem da futura implantação.
+
+GitHub será o destino do código. [GitHub Pages oferece hospedagem estática](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) e, sozinho, não executa este SSR.
+
+## Critérios e limites
+
+- Conteúdo, navegação e recursos da base inicial preservados.
+- SSR demonstrado em servidor compilado, com controle estático.
+- Build e execução da imagem conferidos, incluindo healthcheck e usuário sem root.
+- Comandos e responsabilidades documentados junto do código.
+- Revisão visual e comercial, teste na VPS e publicação registrados como pendentes.
+
+Banco, autenticação, administração, pedidos e integração com o Caixa da Feira permanecem fora desta etapa. Os resultados detalhados ficam em [Decisões e andamento](05-decisoes-e-andamento.md).

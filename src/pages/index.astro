@@ -1,0 +1,63 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Cardapio from "../components/Cardapio.astro";
+---
+
+<SiteLayout>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="page-header container" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Con Affetto, início">
+      <!-- A janela mostra o logo original sem as margens transparentes do PNG. -->
+      <svg viewBox="524 388 736 440" width="184" height="110" aria-hidden="true" focusable="false">
+        <image href="/assets/marca/logo-principal.png" width="1754" height="1241"></image>
+      </svg>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#nossa-historia">A Con Affetto</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="hero container" aria-labelledby="titulo-principal">
+      <div class="hero-copy">
+        <p class="eyebrow">Con Affetto</p>
+        <h1 id="titulo-principal">Sabor da Itália.<br><span>Carinho de família.</span></h1>
+        <p class="hero-description">Biscoitos artesanais e pipocas gourmet. Receitas e sabores para compartilhar.</p>
+        <a class="primary-link" href="#cardapio">Conheça o cardápio <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <span class="art-label">Receitas de família</span>
+        <svg viewBox="715 479 324 283" width="324" height="283" focusable="false">
+          <image href="/assets/marca/simbolo-violeta.png" width="1754" height="1241"></image>
+        </svg>
+        <span class="art-signature">Com afeto.</span>
+      </div>
+    </section>
+
+    <Cardapio />
+
+    <section class="story-section container" id="nossa-historia" aria-labelledby="titulo-historia">
+      <div class="story-heading">
+        <p class="eyebrow">A Con Affetto</p>
+        <h2 id="titulo-historia">Uma história<br>feita em família.</h2>
+      </div>
+      <div class="story-copy">
+        <p>A Con Affetto nasceu do amor de Maria pela confeitaria e das receitas que aprendeu com a família.</p>
+        <p>Essa origem acompanha a marca: o cuidado no preparo, o carinho em cada detalhe e a vontade de compartilhar o que é feito com afeto.</p>
+        <p class="story-signature">Sabor da Itália e carinho da família brasileira.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container footer-content">
+      <div>
+        <p class="footer-brand">Con Affetto</p>
+        <p class="footer-description">Biscoitos artesanais e pipocas gourmet.</p>
+      </div>
+      <a href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</SiteLayout>

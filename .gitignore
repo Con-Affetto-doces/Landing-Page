@@ -17,5 +17,6 @@ __pycache__/
 .idea/
 .vscode/
 node_modules/
+.astro/
 dist/
 coverage/

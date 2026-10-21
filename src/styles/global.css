@@ -1,7 +1,7 @@
 /* Arquivos da identidade fornecida. Pesos e estilos correspondem aos TTFs. */
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fontes/poppins-light.woff2") format("woff2");
+  src: url("/assets/fontes/poppins-light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fontes/poppins-medium.woff2") format("woff2");
+  src: url("/assets/fontes/poppins-medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Bodoni Moda";
-  src: url("./assets/fontes/bodoni-moda-black-italic.woff2") format("woff2");
+  src: url("/assets/fontes/bodoni-moda-black-italic.woff2") format("woff2");
   font-weight: 900;
   font-style: italic;
   font-display: swap;

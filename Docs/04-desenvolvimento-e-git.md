@@ -1,43 +1,68 @@
 # Desenvolvimento, validação e Git
 
-As instruções de prévia e as verificações abaixo descrevem a base estática atual. O requisito de SSR está em planejamento; seus critérios de implementação e execução ficam em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md).
-
 ## Fluxo de trabalho
 
-Cada etapa começa por uma necessidade observável: conteúdo a acrescentar, problema de leitura, comportamento ou requisito novo. Antes de adotar uma tecnologia, registrar o que ela resolve e o custo de mantê-la. Depois da alteração, conferir o resultado, atualizar a documentação afetada e criar um commit coerente.
+Cada etapa começa por uma necessidade observável: conteúdo, problema de leitura, comportamento ou requisito novo. Antes de adotar uma tecnologia, registrar o que ela resolve e o custo de mantê-la. Depois da alteração, conferir o resultado, atualizar a documentação afetada e criar um commit coerente.
 
-O arquivo HTML entregue ao visitante é o próprio fonte da página. Não existe uma pasta de compilação para regenerar. Atualizar o navegador depois de salvar é suficiente; se o navegador conservar uma versão antiga do CSS, faça um recarregamento completo.
+A implementação usa os fontes de `src/`; os recursos públicos ficam em `public/assets/`. `dist/` é saída gerada. Não editar os arquivos compilados como forma de manutenção.
 
-## Prévia local
+## Instalação e prévia
 
-Na raiz do projeto:
+Na raiz, com Node e npm compatíveis com `package.json`:
 
 ```bash
-python3 -m http.server 4173 --bind 127.0.0.1 --directory public
+npm ci
+npm run dev
 ```
 
-Acesse `http://127.0.0.1:4173`. O bind em `127.0.0.1` limita esta prévia ao próprio computador. Para encerrar, use `Ctrl+C` no terminal que iniciou o comando. Se a porta já estiver ocupada, escolha outra e use o endereço correspondente; não encerre o serviço existente.
+Acesse `http://127.0.0.1:4173`. O servidor acompanha alterações e pode incluir ferramentas de desenvolvimento no navegador. `Ctrl+C` encerra o processo iniciado. Se a porta estiver ocupada, use `npm run dev -- --port 4174`; não encerre um serviço alheio.
 
-Servir `public/` mantém a documentação e os demais arquivos do repositório fora da raiz HTTP. O servidor Python é somente a ferramenta local, não uma proposta de servidor de produção.
+Host e porta padrão ficam em `astro.config.mjs`, permitindo que uma opção da CLI substitua a porta sem duplicar argumentos. Astro 7 detecta agentes de IA e pode iniciar a prévia em segundo plano. Em testes controlados, `npm run dev -- --ignore-lock` mantém a execução em primeiro plano, sem substituir um servidor existente. Para uma prévia em background iniciada por você neste projeto, os subcomandos `npm run dev -- status`, `npm run dev -- logs` e `npm run dev -- stop` permitem acompanhar e encerrar o processo. Conferir a identidade antes de encerrar; não usar `--force` para substituir uma sessão alheia.
+
+O mínimo atual é Node 22.22.0 e npm 9.6.5. A imagem de produção usa Node 24.22.0 LTS; as versões efetivamente verificadas ficam em [Decisões e andamento](05-decisoes-e-andamento.md). `npm ci` instala a árvore do lockfile. Para alterar dependências, conferir compatibilidade, modificar o conjunto deliberadamente e revisar também o lockfile.
+
+## Tipos, compilação e execução de produção
+
+```bash
+npm run check
+```
+
+Esse comando verifica `.astro` e TypeScript. Para compilar, use:
+
+```bash
+npm run build
+```
+
+O build já executa `astro check` antes de `astro build`; não é necessário repetir a checagem sem alteração dos fontes. Para servir o resultado compilado apenas no computador local:
+
+```bash
+HOST=127.0.0.1 PORT=4173 npm start
+```
+
+O processo usa `dist/server/entry.mjs` e atende os recursos de `dist/client/`. Ajuste `PORT` se a porta estiver em uso. O adaptador aceita `HOST` e `PORT` por ambiente; os valores explícitos acima limitam o teste ao computador. No Docker, o processo usa `HOST=0.0.0.0` para ser alcançável pelo proxy.
+
+Build e verificações não exigem acesso à planilha, ao caixa ou a banco. Para conferir o pacote que será usado na VPS, siga [Docker e Coolify](07-docker-e-coolify.md).
 
 ## O que verificar
 
-Para esta página estática, a verificação proporcional cobre os produtos escolhidos, as referências do HTML/CSS, a integridade dos arquivos da marca e a resposta HTTP. Não há regra financeira, persistência ou aplicação JavaScript a testar.
+Escolher as conferências pelo comportamento alterado. Na migração de renderização, conferir o HTML do servidor compilado, nomes e notas dos produtos, metadados, links, recursos e limites da raiz pública. Tipagem e build não demonstram esses resultados sozinhos.
 
-Antes de considerar o visual aprovado, abrir a página em computador e celular ou em uma janela estreita e conferir:
+HTML completo não distingue SSR de pré-renderização estática. A prova da migração usou instrumentação do componente em cópia isolada e um controle estático; o método está em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md). Repetir esse tipo de prova quando houver mudança na estratégia de renderização ou no adaptador que possa alterar o contrato.
+
+Antes de considerar o visual aprovado, abrir a página em computador e celular ou janela estreita e conferir:
 
 1. Navegação até cardápio e história; títulos e produtos completos.
 2. Leitura sem rolagem horizontal, sobreposição ou texto cortado.
-3. Uso de `Tab`: o atalho para o conteúdo e os links têm foco visível.
+3. Uso de `Tab`: atalho para o conteúdo e links com foco visível.
 4. Ampliação do texto e uso da página sem JavaScript.
-5. Aparência das fontes, proporções do logotipo e contraste.
-6. Correspondência comercial dos nomes e variantes com os produtos atuais.
+5. Fontes, proporções do logotipo e contraste.
+6. Correspondência comercial dos nomes e variantes.
 
-A resposta HTTP `200` confirma que o servidor entregou o recurso. A conferência de links confirma referências locais. Nenhuma das duas substitui a aprovação visual e comercial do responsável. Os resultados efetivamente obtidos ficam em [Decisões e andamento](05-decisoes-e-andamento.md).
+A resposta HTTP `200`, a equivalência da estrutura HTML e o estado `healthy` do contêiner são evidências distintas da revisão visual. Registrar apenas o que foi observado em [Decisões e andamento](05-decisoes-e-andamento.md).
 
 ## Histórico local
 
-O repositório é independente do `Sistema-Con-Affetto`. A branch inicial é `main`. O Git guarda fontes, recursos necessários à página, licenças das fontes e documentação.
+O repositório é independente do `Sistema-Con-Affetto`, com branch `main`. O Git guarda fontes, lockfile, configuração de execução, recursos públicos usados e documentação.
 
 Antes de uma alteração:
 
@@ -46,36 +71,38 @@ git status --short
 git diff
 ```
 
-Depois da conferência, selecionar os arquivos da etapa, examinar o índice e registrar:
+Depois da conferência, selecionar os arquivos da etapa e revisar o índice. Por exemplo, ao alterar o cardápio e sua documentação:
 
 ```bash
-git add public/index.html public/styles.css Docs/
+git add src/data/cardapio.ts Docs/01-projeto-e-cardapio.md
 git diff --cached
 git status --short
 git commit -m "feat: atualiza cardapio da Con Affetto"
 ```
 
-Os caminhos são exemplos de seleção; inclua apenas os arquivos realmente alterados pela etapa. Uma alteração posterior ao `git add` não entra no commit anterior à seleção. Confira o estado final e o histórico:
+Os caminhos são exemplos; incluir apenas as alterações da etapa. Uma edição posterior ao `git add` exige nova seleção. Conferir o resultado:
 
 ```bash
 git status --short --branch
 git log --oneline -5
 ```
 
-Para recuperar um arquivo, primeiro consulte a versão desejada com `git show COMMIT:caminho/do/arquivo`. Preserve qualquer trabalho ainda não registrado antes de uma restauração. O retorno de uma publicação, quando existir, também precisará atualizar o que a hospedagem entrega.
+## Recuperação
 
-## O que fica fora do histórico
+A base HTML/CSS anterior à migração está no commit `e4fc9da`. Consultar um arquivo sem alterar o checkout:
 
-A planilha de receitas, o banco do caixa, dados de atendimento, backups e documentos completos de criação da marca. O `.gitignore` previne inclusões comuns; ele não remove arquivos já rastreados. Confira a seleção antes de cada commit.
+```bash
+git show e4fc9da:public/index.html
+```
 
-O repositório contém somente cópias dos logotipos usados e fontes com suas licenças. Não há sincronização automática com o cadastro do caixa ou com a planilha.
+Preservar trabalho ainda não registrado antes de restaurar ou reverter qualquer conjunto. O retorno do código não recupera edições editoriais posteriores que tenham sido descartadas. Esta versão não cria banco ou estado persistente de aplicação.
 
-## GitHub e hospedagem
+Na operação futura, reverter o Git local não muda a VPS. A hospedagem precisa reconstruir ou selecionar a versão correspondente; conferir domínio e aplicação depois de qualquer troca.
 
-Git registra a história local. GitHub hospeda uma cópia do repositório. A hospedagem do site entrega os recursos e, na versão SSR planejada, executará a geração das páginas. São três estados distintos.
+## Histórico, GitHub e hospedagem
 
-A instrução inicial deixa GitHub para depois. Antes dessa etapa, definir o nome e a visibilidade do repositório, a licença do código e conferir o material que será enviado. A organização do projeto do caixa é uma referência possível, não um remoto já configurado para este site.
+Planilha, banco do caixa, dados de atendimento, backups e documentos completos da marca ficam fora do repositório. `node_modules/`, `.astro/`, `dist/` e configurações locais são ignorados. `.gitignore` não remove arquivos já rastreados: revisar sempre a seleção.
 
-Depois de um push real, confirmar o hash da branch no remoto com `git ls-remote --heads origin refs/heads/main`. Um commit local ou `git push --dry-run` não confirma publicação.
+Git registra a história local. GitHub será o destino do código. A VPS com Coolify é o destino de hospedagem solicitado; sua preparação está documentada, mas a publicação ainda não foi executada. Definir nome, visibilidade e licença do repositório antes dessa etapa.
 
-A hospedagem será escolhida conforme o frontend e o runtime adotados. O requisito de SSR exige capacidade de executar a renderização; publicar apenas o diretório `public/` não implementa a arquitetura planejada. A comparação e as limitações estão em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md). Não há domínio ou provedor assumido, nem integração externa ativada nesta fase.
+Depois de um push real, confirmar a branch remota com `git ls-remote --heads origin refs/heads/main`. Commit local e dry-run não confirmam publicação. Build local da imagem também não confirma implantação na VPS.

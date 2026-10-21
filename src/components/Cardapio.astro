@@ -1,0 +1,41 @@
+---
+import { biscoitos, pipocas } from "../data/cardapio";
+import ItemCardapio from "./ItemCardapio.astro";
+---
+
+<section class="menu-section" id="cardapio" aria-labelledby="titulo-cardapio">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Nossos sabores</p>
+        <h2 id="titulo-cardapio">O cardápio</h2>
+      </div>
+      <nav class="category-links" aria-label="Categorias do cardápio">
+        <a href="#biscoitos">Biscoitos</a>
+        <a href="#pipocas">Pipocas</a>
+      </nav>
+    </div>
+
+    <div class="menu-groups">
+      <section class="biscuit-menu" id="biscoitos" aria-labelledby="titulo-biscoitos">
+        <div class="category-heading">
+          <span class="category-number" aria-hidden="true">01</span>
+          <h3 id="titulo-biscoitos">Biscoitos artesanais</h3>
+        </div>
+        <ul class="product-list biscuit-list">
+          {biscoitos.map((produto) => <ItemCardapio {...produto} />)}
+        </ul>
+      </section>
+
+      <section class="popcorn-menu" id="pipocas" aria-labelledby="titulo-pipocas">
+        <div class="category-heading">
+          <span class="category-number" aria-hidden="true">02</span>
+          <h3 id="titulo-pipocas">Pipocas gourmet</h3>
+        </div>
+        <ul class="product-list popcorn-list">
+          {pipocas.map((produto) => <ItemCardapio {...produto} />)}
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>

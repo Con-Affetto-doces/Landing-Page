@@ -1,0 +1,17 @@
+.git
+.astro
+node_modules
+dist
+coverage
+Docs
+README.md
+AGENTS.md
+.env
+.env.*
+*.log
+*.sqlite*
+*.db
+*.ods
+*.xlsx
+.idea
+.vscode

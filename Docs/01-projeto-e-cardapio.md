@@ -4,7 +4,7 @@
 
 Apresentar a marca Con Affetto e permitir que o visitante consulte seus produtos em computador ou celular. O responsável definiu esta primeira versão como apresentação e cardápio.
 
-SSR passou a ser requisito do site. Nesta etapa, não há necessidade de banco de dados. A proposta de frontend e renderização está em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md); a base HTML/CSS ainda é a implementação disponível.
+O site usa SSR em Astro e Node, sem banco de dados. A implementação e a comprovação da renderização estão em [Arquitetura e renderização](06-arquitetura-e-renderizacao.md). Docker e a preparação para futura publicação na VPS com Coolify estão em [Docker e Coolify](07-docker-e-coolify.md).
 
 O caminho principal é abrir a página, acessar o cardápio, consultar biscoitos e pipocas e conhecer a história da marca. A navegação usa links para seções da própria página.
 
@@ -56,7 +56,7 @@ Não há fotos atuais de produtos selecionadas para a página. Os mockups da ide
 ## Critérios de entrega desta versão
 
 - Página local com a identidade existente, apresentação e cardápio dos produtos confirmados.
-- Versão com HTML gerado no servidor por requisição, conforme o requisito de SSR; critério ainda pendente de implementação.
+- HTML gerado no servidor por requisição, conforme o requisito de SSR; implementação e verificação local registradas em [Decisões e andamento](05-decisoes-e-andamento.md).
 - Cardápio legível em tela estreita, com navegação por teclado e conteúdo disponível sem JavaScript.
 - Arquivos e fontes locais, sem dependência do aplicativo do caixa ou de serviços de terceiros para carregar o conteúdo.
 - Documentação de código, decisões, manutenção e validação junto dos fontes.

@@ -1,0 +1,12 @@
+---
+import type { Produto } from "../data/cardapio";
+
+type Props = Produto;
+
+const { nome, nota } = Astro.props;
+---
+
+<li class="product">
+  <h4>{nome}</h4>
+  {nota && <p class="product-note">{nota}</p>}
+</li>
