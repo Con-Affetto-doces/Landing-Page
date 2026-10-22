@@ -10,6 +10,8 @@ Essa reconstrução reúne as notas de aprendizado do curso Web, as duas aulas d
 
 Esta síntese interpreta critérios para decidir conforme o contexto. A prioridade relativa de compreensão humana, capacidade de alteração, prazo, desempenho e custos deve ser definida em cada projeto. Uma escolha feita para um projeto específico não estabelece uma preferência global do responsável nem uma regra absoluta do instrutor.
 
+Para decisões de interface, fluxo e experiência, consultar também [Diretrizes de design e UX](DIRETRIZES-DE-DESIGN-E-UX.md), aplicando o aprofundamento conforme a tarefa e a incerteza.
+
 ## 1. Começar pelas pessoas e pelo efeito que o projeto deve produzir
 
 Um projeto pode vencer a dificuldade técnica e continuar sem resolver uma necessidade. As notas sobre as duas muralhas — tecnologia e negócio — colocam essas perguntas lado a lado: conseguimos fazer funcionar e isso produz o efeito necessário para alguém?

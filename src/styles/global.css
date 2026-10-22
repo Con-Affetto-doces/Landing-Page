@@ -1,8 +1,8 @@
-/* Arquivos da identidade fornecida. Pesos e estilos correspondem aos TTFs. */
+/* Tipografia de leitura e interface; o logotipo conserva o desenho original. */
 @font-face {
   font-family: "Poppins";
-  src: url("/assets/fontes/poppins-light.woff2") format("woff2");
-  font-weight: 300;
+  src: url("/assets/fontes/poppins-regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -15,25 +15,15 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Bodoni Moda";
-  src: url("/assets/fontes/bodoni-moda-black-italic.woff2") format("woff2");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* As três primeiras cores vêm do manual. As demais são apoios de leitura. */
 :root {
   --violeta: #685498;
-  --rosa: #de8096;
-  --branco: #ffffff;
-  --texto: #342c40;
-  --texto-suave: #60576b;
-  --rosa-claro: #fbf3f5;
-  --violeta-claro: #f0ecf6;
-  --linha: #ded6e8;
-  --largura-conteudo: 72rem;
+  --violeta-ativo: #57447f;
+  --fundo: #e3ccd0;
+  --painel: #efe5da;
+  --texto: #443640;
+  --linha: rgb(68 54 64 / 28%);
+  --largura-conteudo: 104rem;
+  --margem: clamp(1rem, 4vw, 3rem);
 }
 
 * {
@@ -46,73 +36,76 @@ html {
 
 body {
   margin: 0;
-  background: var(--branco);
+  background: var(--fundo);
   color: var(--texto);
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 ::selection {
   background: var(--violeta);
-  color: var(--branco);
+  color: var(--painel);
 }
 
 a {
-  color: var(--violeta);
-  text-underline-offset: 0.25em;
+  color: inherit;
+  text-underline-offset: 0.3em;
 }
 
 a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 6px;
+  outline: 3px solid var(--violeta);
+  outline-offset: 5px;
 }
 
-h1,
-h2,
-p {
+h1, h2, h3, h4, p, figure {
   margin: 0;
 }
 
-h1,
-h2,
-.art-signature,
-.footer-brand {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-style: italic;
-  font-weight: 900;
+h1, h2, h3 {
+  color: var(--texto);
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 h2 {
-  color: var(--violeta);
-  font-size: clamp(2.75rem, 5vw, 4rem);
-  line-height: 1.12;
+  font-size: clamp(1.625rem, 2.6vw, 2rem);
 }
 
-h3,
-h4 {
-  margin: 0;
-  font-weight: 500;
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
 }
 
-section[id] {
+img, svg {
+  max-width: 100%;
+}
+
+section[id], header[id] {
   scroll-margin-top: 1.5rem;
 }
 
 .container {
-  width: min(calc(100% - 3rem), var(--largura-conteudo));
+  width: min(calc(100% - var(--margem) * 2), var(--largura-conteudo));
   margin-inline: auto;
+}
+
+.page-shell {
+  width: 100%;
+  background: var(--fundo);
 }
 
 .skip-link {
   position: absolute;
-  z-index: 1;
-  top: 0.5rem;
-  left: 1.5rem;
-  padding: 0.5rem 1rem;
+  z-index: 10;
+  top: 0.75rem;
+  left: var(--margem);
+  padding: 0.65rem 1rem;
   transform: translateY(-200%);
-  background: var(--branco);
+  background: var(--painel);
+  color: var(--violeta);
   font-weight: 500;
 }
 
@@ -120,196 +113,213 @@ section[id] {
   transform: translateY(0);
 }
 
-.eyebrow {
-  margin-bottom: 1rem;
-  color: var(--violeta);
-  font-size: 0.75rem;
+.button, .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  max-width: 100%;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  line-height: 1.6;
 }
 
-/* Cabeçalho: links sempre visíveis, inclusive em celular. */
-.page-header {
+.button span, .text-link span {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.button {
+  justify-content: space-between;
+  min-height: 3.25rem;
+  gap: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--violeta);
+  border-radius: 0.375rem;
+  background: var(--violeta);
+  color: var(--painel);
+  text-decoration: none;
+}
+
+.button:hover {
+  border-color: var(--violeta-ativo);
+  background: var(--violeta-ativo);
+}
+
+.text-link {
+  color: var(--texto);
+}
+
+/* A encomenda é acessível pelo cabeçalho sem interromper a consulta ao cardápio. */
+.page-header, .page-footer {
+  background: var(--texto);
+  color: var(--painel);
+}
+
+.page-header a:focus-visible, .page-footer a:focus-visible {
+  outline-color: var(--painel);
+}
+
+.header-content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  padding-block: 0.75rem 1rem;
-  border-bottom: 1px solid var(--linha);
+  gap: 1rem 2rem;
+  padding-block: 0.85rem;
 }
 
 .brand {
   display: block;
+  width: 9rem;
   flex-shrink: 0;
 }
 
 .brand svg {
   display: block;
-  width: 10.5rem;
+  width: 100%;
   height: auto;
 }
 
-.page-header nav {
+.page-header nav, .page-footer nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
-  gap: 0.5rem 2rem;
+  gap: 0.25rem 2rem;
+  min-width: 0;
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-.page-header nav a {
-  display: inline-block;
+.page-header nav a, .page-footer nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
   padding-block: 0.5rem;
+  color: var(--painel);
   text-decoration: none;
 }
 
-.page-header nav a:hover {
+.page-header nav a:hover, .page-footer nav a:hover {
   text-decoration: underline;
 }
 
-/* Apresentação: texto e o símbolo original da marca. */
-.hero {
+.page-header .header-order {
+  padding-inline: 1rem;
+  border: 1px solid var(--painel);
+  border-radius: 0.375rem;
+}
+
+.page-header .header-order:hover {
+  background: var(--painel);
+  color: var(--texto);
+  text-decoration: none;
+}
+
+/* A abertura e o entorno dos painéis compartilham o fundo rosé. */
+.hero-content {
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   align-items: center;
-  gap: 3rem;
-  padding-block: 4rem 5rem;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-block: 2.25rem 3rem;
+}
+
+.hero-copy {
+  min-width: 0;
 }
 
 h1 {
-  font-size: clamp(3.1rem, 6vw, 5.5rem);
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-}
-
-h1 span {
-  color: var(--violeta);
+  max-width: 32rem;
+  font-size: clamp(2.5rem, 4.4vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.16;
 }
 
 .hero-description {
   max-width: 27rem;
-  margin-top: 1.75rem;
-  color: var(--texto-suave);
+  margin-top: 1.5rem;
+  color: var(--texto);
   font-size: 1.0625rem;
+  line-height: 1.7;
 }
 
-.primary-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 2rem;
-  padding: 0.875rem 1.5rem;
-  border: 1px solid var(--violeta);
-  background: var(--violeta);
-  color: var(--branco);
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.primary-link:hover {
-  background: var(--branco);
-  color: var(--violeta);
-}
-
-.primary-link:focus-visible {
-  outline-color: var(--violeta);
-}
-
-.hero-art {
-  position: relative;
-  display: flex;
-  min-height: 27rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 3.5rem 2rem 2.5rem;
-  border-radius: 15rem 15rem 0 0;
-  background: var(--rosa-claro);
-}
-
-.hero-art::before {
-  position: absolute;
-  inset: 1rem;
-  border: 1px solid var(--rosa);
-  border-radius: inherit;
-  content: "";
-}
-
-.hero-art svg {
-  width: min(100%, 15rem);
-  height: auto;
-}
-
-.art-label {
-  color: var(--violeta);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.art-signature {
-  color: var(--violeta);
-  font-size: 2.75rem;
-  line-height: 1.2;
-}
-
-/* Cardápio: as duas categorias têm seus produtos no próprio HTML. */
-.menu-section {
-  padding-block: 4.5rem 5rem;
-  background: var(--violeta-claro);
-}
-
-.section-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.category-links {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 1.75rem;
-  padding-bottom: 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.75rem;
 }
 
-.category-links a {
-  display: inline-block;
-  padding-block: 0.5rem;
+.hero-visual {
+  justify-self: end;
+  width: min(100%, 33.75rem);
+  min-width: 0;
 }
 
-.menu-groups {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
-  gap: 3rem;
-  align-items: start;
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 65%;
+  border-radius: 0.75rem;
+  background: var(--painel);
 }
 
-.category-heading {
+.hero-visual figcaption {
+  margin-top: 0.75rem;
+  color: var(--texto);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Uma peça de cardápio: sabores em destaque e doces num campo complementar. */
+.menu-section {
+  padding-block: 1rem 2.5rem;
+  background: var(--fundo);
+}
+
+.menu-sheet {
+  border: 1px solid var(--linha);
+  border-radius: 0.75rem;
+  background: var(--painel);
+}
+
+.menu-heading {
   display: flex;
-  align-items: baseline;
-  gap: 0.875rem;
-  margin-bottom: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--linha);
 }
 
-.category-heading h3 {
-  font-size: 1.125rem;
+.menu-symbol {
+  display: block;
+  width: 3.25rem;
+  height: auto;
+  flex-shrink: 0;
 }
 
-.category-number {
-  color: var(--violeta);
-  font-size: 0.75rem;
-  font-weight: 500;
+.menu-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.biscuit-menu, .sweets-menu {
+  min-width: 0;
+  padding: 2rem 2.5rem;
+}
+
+.biscuit-menu h3 {
+  margin-bottom: 1rem;
 }
 
 .product-list {
@@ -326,198 +336,285 @@ h1 span {
 
 .product {
   min-width: 0;
-  padding-block: 1.125rem;
+  padding-block: 0.875rem;
   border-bottom: 1px solid var(--linha);
 }
 
-.product h4 {
-  font-size: 1rem;
+.product-name {
+  font-size: 1.0625rem;
+  font-weight: 500;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .product-note {
   margin-top: 0.25rem;
-  color: var(--texto-suave);
-  font-size: 0.8125rem;
+  color: var(--texto);
+  font-size: 0.875rem;
+}
+
+.sweets-menu {
+  border-left: 1px solid var(--linha);
+}
+
+.sweets-menu h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.375rem);
+}
+
+.sweets-menu > p {
+  margin-top: 1rem;
+  color: var(--texto);
+  font-size: 0.875rem;
 }
 
 .popcorn-menu {
-  padding: 1.75rem;
-  background: var(--violeta);
-  color: var(--branco);
+  margin-top: 1.75rem;
 }
 
-.popcorn-menu .category-number {
-  color: var(--branco);
-}
-
-.popcorn-menu .product {
-  border-color: rgb(255 255 255 / 35%);
-}
-
-/* História e rodapé. */
-.story-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  padding-block: 5rem;
-}
-
-.story-copy {
-  padding-top: 2.5rem;
-  color: var(--texto-suave);
-}
-
-.story-copy p + p {
-  margin-top: 1.25rem;
-}
-
-.story-copy .story-signature {
-  color: var(--violeta);
+.popcorn-menu h4 {
+  color: var(--texto);
   font-size: 0.875rem;
   font-weight: 500;
 }
 
+.popcorn-list .product-name {
+  font-size: 1.0625rem;
+}
+
+.menu-footer {
+  padding: 1rem 2.5rem;
+  border-top: 1px solid var(--linha);
+}
+
+/* História e contato compartilham um painel alinhado ao cardápio. */
+.closing-section {
+  padding-bottom: 2.5rem;
+  background: var(--fundo);
+}
+
+.closing-sheet {
+  border: 1px solid var(--linha);
+  border-radius: 0.75rem;
+  background: var(--painel);
+}
+
+.story-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 2.5rem;
+}
+
+.story-section p {
+  font-size: clamp(1.125rem, 1.55vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: 1.75rem 2.5rem;
+  border-top: 1px solid var(--linha);
+}
+
+.contact-section h2 {
+  min-width: 0;
+}
+
+.contact-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.contact-number {
+  color: var(--texto);
+  font-size: 0.875rem;
+}
+
 .page-footer {
-  padding-block: 2.5rem;
-  background: var(--violeta);
-  color: var(--branco);
+  padding-block: 1.5rem 2rem;
 }
 
 .footer-content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem 2rem;
 }
 
 .footer-brand {
-  font-size: 2rem;
-  line-height: 1.3;
+  width: 7.5rem;
 }
 
-.footer-description {
-  margin-top: 0.5rem;
-  font-size: 0.8125rem;
+.footer-return {
+  font-weight: 400;
 }
 
-.page-footer a {
-  display: inline-block;
-  padding-block: 0.5rem;
-  color: var(--branco);
-  font-size: 0.8125rem;
-  font-weight: 500;
+/* Telas amplas ganham escala e densidade próprias, sem alterar o empilhamento móvel. */
+@media (min-width: 100rem) {
+  h1 {
+    max-width: none;
+    font-size: clamp(3.25rem, 3.3vw, 4rem);
+  }
+
+  .hero-description {
+    max-width: 34rem;
+  }
+
+  .hero-visual {
+    width: min(100%, 40rem);
+  }
+
+  .biscuit-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-/* Abaixo de 900 px, categorias em sequência; abaixo de 600 px, uma coluna. */
 @media (max-width: 56.25rem) {
-  .hero {
-    gap: 2rem;
-    padding-block: 3rem;
-  }
-
-  .hero-art {
-    min-height: 23rem;
-    padding-inline: 1.5rem;
-  }
-
-  .art-label {
-    max-width: 8rem;
-  }
-
-  .menu-groups {
+  .hero-content {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+    padding-block: 2.5rem;
   }
 
-  .popcorn-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2rem;
+  h1 {
+    max-width: 30rem;
+    font-size: clamp(2rem, 6vw, 2.25rem);
+  }
+
+  .hero-description {
+    max-width: 30rem;
+  }
+
+  .hero-visual {
+    justify-self: center;
+    width: min(100%, 32.5rem);
+  }
+
+  .menu-heading, .biscuit-menu, .sweets-menu, .menu-footer, .story-section, .contact-section {
+    padding-inline: 1.75rem;
+  }
+
+}
+
+@media (max-width: 47.5rem) {
+  .menu-section {
+    padding-block: 1rem 2rem;
+  }
+
+  .menu-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .biscuit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sweets-menu {
+    border-top: 1px solid var(--linha);
+    border-left: 0;
+  }
+
+  .sweets-menu > p {
+    max-width: 30rem;
   }
 
   .story-section {
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contact-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding-block: 1.5rem;
+  }
+
+  .contact-action {
+    align-items: stretch;
+  }
+
+  .contact-number {
+    text-align: center;
   }
 }
 
 @media (max-width: 37.5rem) {
-  .container {
-    width: calc(100% - 2.5rem);
+  .header-content {
+    gap: 0.5rem;
+    padding-block: 0.75rem;
   }
 
-  .page-header {
-    gap: 1rem;
-  }
-
-  .brand svg {
+  .brand {
     width: 8rem;
   }
 
   .page-header nav {
-    gap: 0.25rem;
-    flex-direction: column;
-    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.25rem 0.5rem;
     font-size: 0.8125rem;
   }
 
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-block: 2.5rem 3rem;
+  .page-header .header-order {
+    padding-inline: 0.5rem;
+  }
+
+  .hero-content {
+    padding-block: 2rem;
   }
 
   .hero-description {
-    font-size: 1rem;
+    margin-top: 1.25rem;
   }
 
-  .hero-art {
-    min-height: 0;
-    padding-block: 3.5rem 2.5rem;
-  }
-
-  .hero-art svg {
-    width: 10rem;
-  }
-
-  .art-label {
-    max-width: none;
-  }
-
-  .art-signature {
-    font-size: 2.25rem;
-  }
-
-  .menu-section {
-    padding-block: 3rem;
-  }
-
-  .section-heading {
+  .hero-actions {
     align-items: flex-start;
     flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
+    margin-top: 1.25rem;
   }
 
-  .biscuit-list,
-  .popcorn-list,
-  .story-section {
-    grid-template-columns: 1fr;
+  .menu-heading, .biscuit-menu, .sweets-menu, .menu-footer, .story-section, .contact-section {
+    padding-inline: 1rem;
   }
 
-  .story-section {
-    gap: 1.5rem;
-    padding-block: 3rem;
+  .menu-heading {
+    padding-block: 1.5rem;
   }
 
-  .story-copy {
-    padding-top: 0;
+  .menu-symbol {
+    width: 2.5rem;
+  }
+
+  .biscuit-menu, .sweets-menu {
+    padding-block: 1.5rem;
+  }
+
+  .product-name {
+    font-size: 1.0625rem;
   }
 
   .footer-content {
-    align-items: flex-start;
     flex-direction: column;
-    gap: 1.25rem;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .page-footer nav {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    font-size: 0.875rem;
   }
 }
 

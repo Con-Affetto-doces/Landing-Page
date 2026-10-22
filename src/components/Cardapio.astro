@@ -1,41 +1,39 @@
 ---
 import { biscoitos, pipocas } from "../data/cardapio";
 import ItemCardapio from "./ItemCardapio.astro";
+import Marca from "./Marca.astro";
+import { contato } from "../data/contato";
 ---
 
 <section class="menu-section" id="cardapio" aria-labelledby="titulo-cardapio">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Nossos sabores</p>
-        <h2 id="titulo-cardapio">O cardápio</h2>
-      </div>
-      <nav class="category-links" aria-label="Categorias do cardápio">
-        <a href="#biscoitos">Biscoitos</a>
-        <a href="#pipocas">Pipocas</a>
-      </nav>
+  <div class="container menu-sheet">
+    <div class="menu-heading">
+      <h2 id="titulo-cardapio">Cardápio</h2>
+      <Marca variante="simbolo" class="menu-symbol" />
     </div>
 
-    <div class="menu-groups">
+    <div class="menu-columns">
       <section class="biscuit-menu" id="biscoitos" aria-labelledby="titulo-biscoitos">
-        <div class="category-heading">
-          <span class="category-number" aria-hidden="true">01</span>
-          <h3 id="titulo-biscoitos">Biscoitos artesanais</h3>
-        </div>
+        <h3 id="titulo-biscoitos">Biscoitos</h3>
         <ul class="product-list biscuit-list">
           {biscoitos.map((produto) => <ItemCardapio {...produto} />)}
         </ul>
       </section>
 
-      <section class="popcorn-menu" id="pipocas" aria-labelledby="titulo-pipocas">
-        <div class="category-heading">
-          <span class="category-number" aria-hidden="true">02</span>
-          <h3 id="titulo-pipocas">Pipocas gourmet</h3>
-        </div>
-        <ul class="product-list popcorn-list">
-          {pipocas.map((produto) => <ItemCardapio {...produto} />)}
-        </ul>
+      <section class="sweets-menu" id="doces" aria-labelledby="titulo-doces">
+        <h3 id="titulo-doces">Doces variados</h3>
+        <p>As pipocas gourmet também fazem parte da nossa seleção de doces.</p>
+        <section class="popcorn-menu" id="pipocas" aria-labelledby="titulo-pipocas">
+          <h4 id="titulo-pipocas">Pipocas gourmet</h4>
+          <ul class="product-list popcorn-list">
+            {pipocas.map((produto) => <ItemCardapio {...produto} />)}
+          </ul>
+        </section>
       </section>
+    </div>
+
+    <div class="menu-footer">
+      <a class="text-link" href={contato.whatsapp.url}>Encomendas pelo WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>

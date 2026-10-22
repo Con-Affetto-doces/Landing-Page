@@ -2,9 +2,9 @@
 
 ## Objetivo e estado
 
-Executar o site com SSR na VPS do responsável, usando Coolify para construir e operar a aplicação. Dockerfile e imagem foram testados localmente. O código está publicado no repositório público [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page); nenhum recurso da VPS foi criado ou alterado.
+O site foi implantado pelo responsável na VPS com Coolify, em `https://conaffetto.com.br`. A página e seu CSS responderam por HTTPS em 21/10/2026. Dockerfile e imagem da base já tinham sido testados localmente. O código base está em [Con-Affetto-doces/Landing-Page](https://github.com/Con-Affetto-doces/Landing-Page); o envio da revisão visual para `main` foi autorizado em 22/10/2026. O estado de uma implantação resultante deve ser confirmado no Coolify e na aplicação. O painel e o estado interno da VPS não foram inspecionados.
 
-A configuração atende o site na raiz do domínio, como `https://seu-dominio/`. Domínio, DNS e TLS ainda serão definidos na etapa de implantação. A documentação oficial consultada pode diferir da versão instalada na VPS; conferir os campos equivalentes ao configurar a aplicação.
+A configuração atende o site na raiz do domínio. O endereço confirmado é `https://conaffetto.com.br/`. Os valores abaixo documentam o contrato esperado pela imagem; não são uma cópia das configurações efetivamente inspecionadas no painel. A documentação oficial consultada pode diferir da versão instalada na VPS; conferir os campos equivalentes ao configurar a aplicação.
 
 ## O que a imagem contém
 
@@ -55,7 +55,7 @@ docker stop con-affetto-site-local
 
 `--rm` remove o contêiner ao encerrar; a imagem fica disponível para outros testes. Os testes realizados nesta etapa usaram uma imagem local identificada como `con-affetto-site:astro-ssr-20261020`, em Linux/amd64.
 
-## Configuração futura no Coolify
+## Configuração para o Coolify
 
 Usar uma aplicação construída a partir do repositório Git do site, já publicado, com acesso compatível com sua visibilidade:
 
@@ -79,7 +79,9 @@ O build executa os comandos necessários; não é preciso manter um segundo conj
 
 ## Verificação da publicação
 
-Depois de implantar de fato, registrar o commit publicado e conferir logs de inicialização, saúde do contêiner, acesso pelo domínio com TLS e carregamento de CSS, fontes e logotipos. Conferir o HTML entregue e percorrer cardápio e navegação. Esses resultados ainda não foram observados na VPS.
+Depois de implantar de fato, registrar o commit publicado e conferir logs de inicialização, saúde do contêiner, acesso pelo domínio com TLS e carregamento de CSS, fontes e logotipos. Conferir o HTML entregue e percorrer cardápio e navegação. O acesso HTTPS à página e aos recursos da versão anterior foi observado. Logs, saúde do contêiner e configuração do proxy ainda não foram inspecionados na VPS.
+
+A última consulta de 21/10/2026 retornou HTTP 503, `no available server`. O horário e o limite da observação estão em [Decisões e andamento](05-decisoes-e-andamento.md); a causa não foi investigada nesta revisão visual local.
 
 O healthcheck responde se a rota está disponível; não aprova o visual ou o conteúdo comercial. Em uma troca de versão, voltar o Git local não muda a aplicação publicada: será necessário reconstruir ou selecionar a versão anterior no ambiente de hospedagem e verificar o resultado.
 

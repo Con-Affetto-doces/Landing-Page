@@ -1,0 +1,50 @@
+---
+interface Props {
+  variante?: "principal" | "principal-inverso" | "simbolo" | "simbolo-inverso";
+  class?: string;
+}
+
+const { variante = "principal", class: classe } = Astro.props;
+const marcas = {
+  principal: {
+    arquivo: "logo-principal.png",
+    janela: "524 388 736 440",
+    largura: 736,
+    altura: 440,
+    larguraOriginal: 1754,
+  },
+  "principal-inverso": {
+    arquivo: "logo-inverso.png",
+    janela: "521 379 736 441",
+    largura: 736,
+    altura: 441,
+    larguraOriginal: 1755,
+  },
+  simbolo: {
+    arquivo: "simbolo-violeta.png",
+    janela: "715 479 324 283",
+    largura: 324,
+    altura: 283,
+    larguraOriginal: 1754,
+  },
+  "simbolo-inverso": {
+    arquivo: "simbolo-branco.png",
+    janela: "715 479 324 283",
+    largura: 324,
+    altura: 283,
+    larguraOriginal: 1755,
+  },
+};
+const marca = marcas[variante];
+---
+
+<svg
+  class={classe}
+  viewBox={marca.janela}
+  width={marca.largura}
+  height={marca.altura}
+  aria-hidden="true"
+  focusable="false"
+>
+  <image href={"/assets/marca/" + marca.arquivo} width={marca.larguraOriginal} height="1241"></image>
+</svg>

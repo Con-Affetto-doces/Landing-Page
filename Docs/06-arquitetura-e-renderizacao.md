@@ -64,6 +64,6 @@ O código está no repositório público [Con-Affetto-doces/Landing-Page](https:
 - SSR demonstrado em servidor compilado, com controle estático.
 - Build e execução da imagem conferidos, incluindo healthcheck e usuário sem root.
 - Comandos e responsabilidades documentados junto do código.
-- Revisão visual e comercial, teste na VPS e implantação registrados como pendentes.
+- Revisão visual e comercial da proposta local pendentes. A base anterior foi implantada pelo responsável; o domínio responde por HTTPS, sem inspeção do painel e do estado interno da VPS.
 
 Banco, autenticação, administração, pedidos e integração com o Caixa da Feira permanecem fora desta etapa. Os resultados detalhados ficam em [Decisões e andamento](05-decisoes-e-andamento.md).
